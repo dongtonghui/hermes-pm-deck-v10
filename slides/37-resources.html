@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>37 · 资源与 Q&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  body { background: var(--tech-bg); color: #fff; }
+  .slide-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 1px) 0 0 / 40px 40px;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .glow-1 {
+    position: absolute;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,92,38,0.18), transparent 60%);
+    filter: blur(100px);
+    top: -300px; left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .glow-2 {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,123,58,0.12), transparent 55%);
+    filter: blur(80px);
+    bottom: -180px; right: -100px;
+    pointer-events: none;
+  }
+
+  .kicker-light {
+    color: var(--accent-light);
+    margin-bottom: 36px;
+    letter-spacing: 0.18em;
+    font-size: 26px;
+  }
+
+  h1 {
+    color: #fff;
+    font-size: 108px;
+    margin-bottom: 48px;
+    line-height: 1.1;
+  }
+  h1 .accent { color: var(--accent-light); }
+
+  .resources {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1200px;
+    width: 100%;
+    margin-bottom: 48px;
+  }
+  .resource {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 14px;
+    padding: 28px;
+    text-align: left;
+    backdrop-filter: blur(10px);
+    transition: transform 220ms, border-color 220ms, box-shadow 220ms;
+  }
+  .resource:hover {
+    transform: translateY(-4px);
+    border-color: rgba(232,123,58,0.30);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.28), 0 0 24px rgba(196,92,38,0.10);
+  }
+  .resource h4 { color: var(--accent-light); font-family: var(--font-body); font-size: 20px; margin-bottom: 12px; }
+  .resource p { color: rgba(255,255,255,0.72); font-size: var(--small); line-height: 1.55; }
+
+  .qa {
+    font-size: 40px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 16px;
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 30px rgba(232,123,58,0.25);
+  }
+  .contact { font-size: var(--small); color: rgba(255,255,255,0.55); }
+
+  .accent-pillar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 18px;
+    background: linear-gradient(180deg, var(--accent-light), var(--accent-dark));
+    box-shadow: 0 0 32px rgba(232,123,58,0.30);
+  }
+</style>
+</head>
+<body class="tech-dark">
+<div class="slide-content">
+  <div class="grid-bg"></div>
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+  <div class="accent-pillar"></div>
+
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>38 / 38 · 收尾</div>
+  </div>
+
+  <div class="main" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+    <div class="kicker-light anim-fade-up">Resources & Q&A</div>
+    <h1 class="anim-fade-up delay-2">资源参考<br><span class="accent">& 开放问答</span></h1>
+
+    <div class="resources anim-fade-up delay-4">
+      <div class="resource anim-fade-up delay-4">
+        <h4>工具参考</h4>
+        <p>Hermes 桌面端、Claude、Cursor、GitHub Copilot、MCP 工具等。按你的现有工作流选择，不必刻意切换。</p>
+      </div>
+      <div class="resource anim-fade-up delay-5">
+        <h4>Skill 生态</h4>
+        <p>Anthropic Claude Code Skills 规范、MCP 官方文档、Hermes 官方文档与 Skill 市场。</p>
+      </div>
+      <div class="resource anim-fade-up delay-6">
+        <h4>本培训带走物</h4>
+        <p>多 Agent 模板、Reddit 情报模板、Skill 设计清单、定时任务四要素清单。</p>
+      </div>
+    </div>
+
+    <div class="qa anim-fade-up delay-7">Q & A</div>
+    <div class="contact anim-fade-up delay-8">欢迎带着你的真实工作场景来讨论</div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">收尾 · 资源与 Q&A</div>
+    <div>AI 工具在产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

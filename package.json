@@ -1,0 +1,17 @@
+{
+  "name": "hermes-pm-deck-v8",
+  "version": "1.0.0",
+  "description": "AI 工具在硬件产品工作中的深度应用 · V8 HTML Slide Deck",
+  "scripts": {
+    "thumbs": "node scripts/gen_deck_thumbs.mjs --slides slides --out thumbs",
+    "pdf": "node export_deck_pdf.mjs --slides slides --out hermes-pm-deck.pdf"
+  },
+  "keywords": ["slides", "deck", "ai", "product-management"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "playwright": "^1.61.1",
+    "sharp": "^0.35.3"
+  }
+}

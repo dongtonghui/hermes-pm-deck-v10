@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>09 · 植物灯氛围灯案例</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  body { background: var(--tech-bg); color: #fff; }
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; }
+  .left h2 { color: #fff; font-size: 68px; margin-bottom: 32px; line-height: 1.15; }
+  .left h2 .accent { color: var(--accent-light); }
+  .left .subtitle { color: rgba(255,255,255,0.72); font-size: 30px; margin-bottom: 48px; line-height: 1.5; }
+
+  .question {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 32px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.05);
+    border-left: 4px solid var(--accent-light);
+  }
+  .question h4 { color: var(--accent-light); font-family: var(--font-body); font-size: 22px; margin-bottom: 12px; }
+  .question p { color: rgba(255,255,255,0.85); font-size: var(--small); line-height: 1.6; }
+
+  .right { display: flex; flex-direction: column; gap: 20px; }
+  .fact {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 12px;
+    padding: 24px 28px;
+    backdrop-filter: blur(8px);
+    transition: transform 220ms, border-color 220ms, box-shadow 220ms;
+  }
+  .fact:hover {
+    transform: translateX(6px);
+    border-color: rgba(232,123,58,0.35);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25), 0 0 20px rgba(196,92,38,0.10);
+  }
+  .fact h4 { color: #fff; font-family: var(--font-body); font-size: 20px; margin-bottom: 8px; }
+  .fact p { color: rgba(255,255,255,0.68); font-size: var(--small); line-height: 1.55; }
+
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 1px) 0 0 / 32px 32px;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .glow {
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,92,38,0.14), transparent 60%);
+    filter: blur(80px);
+    bottom: -250px; left: -180px;
+    pointer-events: none;
+  }
+
+  .accent-pillar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 18px;
+    background: linear-gradient(180deg, var(--accent-light), var(--accent-dark));
+    box-shadow: 0 0 32px rgba(232,123,58,0.30);
+  }
+</style>
+</head>
+<body class="tech-dark">
+<div class="slide-content">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="accent-pillar"></div>
+
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>10 / 38 · 原则 1</div>
+  </div>
+
+  <div class="main">
+    <div class="left">
+      <div class="kicker anim-fade-up" style="color: var(--accent-light);">Core Case</div>
+      <h2 class="anim-fade-up delay-2">案例：植物生长照射仪<br><span class="accent">要不要加氛围灯？</span></h2>
+      <p class="subtitle anim-fade-up delay-3">团队假设：加 RGB 氛围灯能提升家居颜值、形成差异化。我们要做的不是直接写 PRD，而是先判断这个假设是否成立。</p>
+
+      <div class="question anim-fade-up delay-4">
+        <h4>核心问题</h4>
+        <p>氛围灯是用户的刚需，还是团队的一厢情愿？用户真实痛点到底是「缺少氛围灯」，还是「生长灯太亮太刺眼」？</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="fact anim-fade-up delay-3">
+        <h4>产品背景</h4>
+        <p>植物生长照射仪：全光谱 LED、定时开关、亮度调节、悬挂安装。</p>
+      </div>
+      <div class="fact anim-fade-up delay-4">
+        <h4>拟新增功能</h4>
+        <p>RGB 氛围灯：在不种植时作为家居氛围灯使用。</p>
+      </div>
+      <div class="fact anim-fade-up delay-5">
+        <h4>团队假设</h4>
+        <p>增加氛围灯能拓宽使用场景、提升家居颜值、形成差异化卖点。</p>
+      </div>
+      <div class="fact anim-fade-up delay-6">
+        <h4>需要验证</h4>
+        <p>用户真需求？技术成本？商业回报？竞品做法？</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">原则 1 · 案例引入</div>
+    <div>AI 工具在产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

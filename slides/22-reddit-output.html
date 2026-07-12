@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>22 · 结构化洞察报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .header { margin-bottom: 32px; }
+  .header h2 { font-size: 68px; margin-bottom: 16px; }
+  .header .subtitle { font-size: 26px; color: var(--ink-secondary); max-width: 960px; }
+  .report { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 32px; box-shadow: 0 6px 24px rgba(28,27,24,0.06); }
+  .report-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+  .report-header h4 { font-family: var(--font-body); font-size: 22px; }
+  .report-header .meta { font-size: var(--tiny); color: var(--ink-muted); }
+  .report-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; }
+  .report-section { background: var(--paper-warm); border-radius: 12px; padding: 22px; }
+  .report-section h5 { font-family: var(--font-body); font-size: 18px; margin-bottom: 12px; color: var(--accent-dark); }
+  .report-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .report-section li { font-size: var(--tiny); color: var(--ink-secondary); line-height: 1.55; padding-left: 16px; position: relative; }
+  .report-section li::before { content: "•"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  .quote-box { background: var(--dark-block); color: #fff; border-radius: 12px; padding: 22px; margin-top: 20px; }
+  .quote-box h5 { color: var(--accent-light); font-family: var(--font-body); font-size: 18px; margin-bottom: 12px; }
+  .quote { font-family: var(--font-display); font-size: var(--small); line-height: 1.6; margin-bottom: 10px; color: rgba(255,255,255,0.9); }
+  .quote-source { font-size: var(--tiny); color: rgba(255,255,255,0.55); }
+  .chart { display: flex; align-items: flex-end; gap: 16px; height: 120px; margin-top: 12px; }
+  .bar { flex: 1; background: var(--accent); border-radius: 6px 6px 0 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 8px; color: #fff; font-size: 13px; font-weight: 600; }
+  .bar:nth-child(2) { background: var(--accent-dark); }
+  .bar:nth-child(3) { background: var(--ink-secondary); }
+  .bar:nth-child(4) { background: var(--line-strong); }
+  .bar-label { position: absolute; bottom: -22px; font-size: 12px; color: var(--ink-muted); }
+  .chart-wrap { position: relative; }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>23 / 38 · 原则 2</div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="kicker">Output Example</div>
+      <h2>输出样例：结构化<span class="accent">洞察报告</span></h2>
+      <p class="subtitle">不是原始帖子堆砌，而是经过 AI 分析后的主题分布、情感倾向、痛点排序和机会建议。</p>
+    </div>
+
+    <div class="report">
+      <div class="report-header">
+        <h4>植物灯 Reddit 情报报告 · 演示数据样例</h4>
+        <div class="meta">数据来源：pullpush.io 等第三方 Reddit 存档 · 13 个 subreddit · 示例抓取 1200 帖 / 1167 评论</div>
+      </div>
+
+      <div class="report-grid">
+        <div class="report-section">
+          <h5>用户讨论主题分布</h5>
+          <ul>
+            <li>发芽/生长（33.4%）— 优先级最高</li>
+            <li>空间/拥挤（20.5%）</li>
+            <li>光照/灯光（18.3%）</li>
+            <li>灌溉/水位（18.0%）</li>
+            <li>外观/装饰/氛围（7.1%）— 优先级最低</li>
+          </ul>
+        </div>
+        <div class="report-section">
+          <h5>关键发现</h5>
+          <ul>
+            <li>明确提及「氛围灯 / ambient / RGB」的帖子仅 1 条，评论仅 1 条</li>
+            <li>没有用户提到 Hue、Govee、Nanoleaf 等氛围灯品牌</li>
+            <li>真实痛点是「光污染」：约 5 条原帖抱怨灯太亮影响生活</li>
+            <li>用户更想要调光、定时、遮光/柔光，而非 RGB</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quote-box">
+        <h5>典型原声</h5>
+        <div class="quote">"I was struggling with the grow light being WAY too bright at night... even from the bedroom, the illumination of this thing was visible out the window into the balcony."</div>
+        <div class="quote-source">— r/aerogarden · 光污染痛点 · 情感：负面</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">原则 2 · Reddit 情报抓取（演示数据）</div>
+    <div>AI 工具在硬件产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

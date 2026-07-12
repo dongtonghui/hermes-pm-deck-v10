@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>27 · Hermes Skill 机制</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; align-items: center; }
+  .left h2 { font-size: 68px; margin-bottom: 28px; }
+  .left .body-large { max-width: 620px; margin-bottom: 36px; }
+  .feature { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 22px; }
+  .feature .icon { width: 44px; height: 44px; border-radius: 10px; background: var(--accent-pale); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--accent-dark); flex-shrink: 0; }
+  .feature h4 { font-family: var(--font-body); font-size: 22px; margin-bottom: 6px; }
+  .feature p { font-size: var(--small); color: var(--ink-secondary); line-height: 1.55; }
+  .right { background: var(--dark-block); border-radius: 20px; padding: 44px; color: #fff; }
+  .right h4 { color: var(--accent-light); font-family: var(--font-body); font-size: 24px; margin-bottom: 24px; }
+  .compare { display: flex; flex-direction: column; gap: 16px; }
+  .compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .compare-cell { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 18px; }
+  .compare-cell .label { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .compare-cell p { font-size: var(--small); color: rgba(255,255,255,0.9); line-height: 1.55; }
+  .compare-header { font-size: var(--tiny); color: rgba(255,255,255,0.5); text-align: center; }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>28 / 38 · 原则 4</div>
+  </div>
+
+  <div class="main">
+    <div class="left">
+      <div class="kicker">Hermes Mechanism</div>
+      <h2>Hermes 的 Skill 机制与 Anthropic Skill 规范<span class="accent">异同</span></h2>
+      <p class="body-large">Hermes 采用了类似 Anthropic Claude Code Skills（SKILL.md）的描述机制，并在此基础上扩展了定时任务、消息渠道、MCP 工具等能力。它们不是同一套实现，但理念相通。</p>
+
+      <div class="feature">
+        <div class="icon">01</div>
+        <div>
+          <h4>类似理念</h4>
+          <p>都用 SKILL.md 描述 name、description、工作流，让自然语言指令可复用。</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="icon">02</div>
+        <div>
+          <h4>Hermes 扩展</h4>
+          <p>支持定时触发、消息渠道推送、浏览器自动化、跨会话记忆。</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="icon">03</div>
+        <div>
+          <h4>可迁移</h4>
+          <p>写好的 Skill 可以在不同项目、不同团队成员之间复用。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <h4>Anthropic Claude Code Skills vs Hermes 扩展</h4>
+      <div class="compare">
+        <div class="compare-row">
+          <div class="compare-cell">
+            <div class="label">Anthropic 规范</div>
+            <p>SKILL.md 结构、输入、工作流、输出格式（Claude Code Skills）</p>
+          </div>
+          <div class="compare-cell">
+            <div class="label">Hermes 扩展</div>
+            <p>定时任务、消息渠道、MCP、浏览器自动化、跨会话持久记忆</p>
+          </div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">
+            <div class="label">调用方式</div>
+            <p>对话中输入 Skill 名称</p>
+          </div>
+          <div class="compare-cell">
+            <div class="label">调用方式</div>
+            <p>对话 / 定时 / 飞书 / 钉钉</p>
+          </div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">
+            <div class="label">上下文</div>
+            <p>项目内会话上下文</p>
+          </div>
+          <div class="compare-cell">
+            <div class="label">上下文</div>
+            <p>跨会话持久记忆</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">原则 4 · Hermes</div>
+    <div>AI 工具在硬件产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

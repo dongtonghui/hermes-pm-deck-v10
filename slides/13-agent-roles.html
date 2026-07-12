@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>13 · 4 个 Agent 角色</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .header { margin-bottom: 44px; }
+  .header h2 { font-size: 72px; margin-bottom: 16px; }
+  .header .subtitle { font-size: 28px; color: var(--ink-secondary); max-width: 960px; }
+  .agents { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 40px; }
+  .agent { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 32px 24px; text-align: center; box-shadow: 0 4px 20px rgba(28,27,24,0.05); }
+  .agent .avatar { width: 72px; height: 72px; border-radius: 50%; background: var(--accent-pale); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-family: var(--font-display); font-size: 28px; font-weight: 900; color: var(--accent-dark); }
+  .agent h4 { font-family: var(--font-body); font-size: 22px; margin-bottom: 10px; }
+  .agent p { font-size: var(--tiny); color: var(--ink-secondary); line-height: 1.55; }
+  .prompt-tips { background: var(--accent-pale); border: 1px solid var(--accent-light); border-radius: 14px; padding: 28px 36px; }
+  .prompt-tips h4 { font-family: var(--font-body); font-size: 22px; margin-bottom: 14px; color: var(--accent-dark); }
+  .prompt-tips ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .prompt-tips li { font-size: var(--small); color: var(--ink-secondary); padding-left: 28px; position: relative; }
+  .prompt-tips li::before { content: "✓"; position: absolute; left: 0; top: 2px; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: #fff; border-radius: 50%; font-size: 12px; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>14 / 38 · 原则 3</div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="kicker">Roles</div>
+      <h2>4 个 Agent 的<span class="accent">角色定义</span></h2>
+      <p class="subtitle">每个 Agent 只从一个视角分析，避免互相干扰；Prompt 要明确角色、目标、约束、输出格式。</p>
+    </div>
+
+    <div class="agents">
+      <div class="agent">
+        <div class="avatar">U</div>
+        <h4>用户视角 Agent</h4>
+        <p>用户是谁？真正痛点是什么？使用场景有哪些？氛围灯是刚需吗？</p>
+      </div>
+      <div class="agent">
+        <div class="avatar">T</div>
+        <h4>技术视角 Agent</h4>
+        <p>实现成本？对主功能影响？散热、寿命、能耗、认证如何变化？</p>
+      </div>
+      <div class="agent">
+        <div class="avatar">B</div>
+        <h4>商业视角 Agent</h4>
+        <p>定价空间？溢价能力？市场容量？渠道接受度？ROI 如何？</p>
+      </div>
+      <div class="agent">
+        <div class="avatar">C</div>
+        <h4>竞品视角 Agent</h4>
+        <p>竞品怎么做？为什么没做氛围灯？差异化机会真的成立吗？</p>
+      </div>
+    </div>
+
+    <div class="prompt-tips">
+      <h4>Prompt 设计原则</h4>
+      <ul>
+        <li>给角色、给目标、给约束、给输出格式</li>
+        <li>要求引用证据，标注"事实 / 推测 / 待验证"</li>
+        <li>明确要求 Agent 对其他角色的结论提出质疑</li>
+        <li>使用同一套输入，避免信息不一致</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">原则 3 · 角色定义</div>
+    <div>AI 工具在产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>16 · 商业价值分析</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+  .left h2 { font-size: 72px; margin-bottom: 24px; }
+  .left .subtitle { font-size: 28px; color: var(--ink-secondary); margin-bottom: 32px; }
+
+  .question { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 28px; margin-bottom: 20px; }
+  .question h4 { font-family: var(--font-body); font-size: 20px; margin-bottom: 12px; color: var(--accent-dark); }
+  .question p { font-size: var(--small); color: var(--ink-secondary); line-height: 1.6; }
+
+  .right { display: flex; flex-direction: column; gap: 20px; }
+  .business-card { background: var(--paper-warm); border-radius: 14px; padding: 26px; }
+  .business-card h4 { font-family: var(--font-body); font-size: 20px; margin-bottom: 10px; }
+  .business-card p { font-size: var(--small); color: var(--ink-secondary); line-height: 1.6; }
+  .business-card.negative { border-left: 4px solid var(--accent); }
+
+  .verdict { background: var(--dark-block); color: #fff; border-radius: 16px; padding: 28px; margin-top: 8px; }
+  .verdict h4 { font-family: var(--font-body); font-size: 22px; margin-bottom: 10px; color: var(--accent-light); }
+  .verdict p { font-size: var(--small); color: rgba(255,255,255,0.85); line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead"><div class="brand">AI 工具深度应用</div><div>17 / 38 · 原则 3</div></div>
+
+  <div class="main">
+    <div class="left">
+      <div class="kicker">Business Lens</div>
+      <h2>商业价值：<span class="accent">能不能卖得动</span>？</h2>
+      <p class="subtitle">一个功能值不值得做，最终要看它能不能转化为购买决策或溢价空间。</p>
+
+      <div class="question">
+        <h4>关键问题</h4>
+        <p>氛围灯能否让用户愿意多付钱？它是不是购买决策中的决定性因素？营销卖点的可持续性如何？</p>
+      </div>
+
+      <div class="question">
+        <h4>用户支付意愿推断</h4>
+        <p>在预算敏感的新手市场，用户更倾向于为「更大功率」「更好光谱」「更长质保」付费。氛围灯作为视觉附加值，很难支撑显著溢价。</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="business-card">
+        <h4>购买决策因素</h4>
+        <p>功能参数（光谱、功率、覆盖面积）<br>价格与性价比<br>品牌口碑与 reviews<br>质保与售后服务</p>
+      </div>
+      <div class="business-card negative">
+        <h4>营销卖点风险</h4>
+        <p>「氛围灯」作为差异化卖点，新鲜感强但技术壁垒低。竞品可以快速跟进，卖点会迅速被稀释。</p>
+      </div>
+      <div class="business-card">
+        <h4>更适合的定位</h4>
+        <p>作为高端 SKU 的可选特性，或作为众筹/限量版的营销噱头，而不是全系标配。</p>
+      </div>
+
+      <div class="verdict">
+        <h4>商业视角结论</h4>
+        <p>氛围灯难以成为核心购买决策因素，也不太可能支撑显著溢价。它的商业价值更多体现在「锦上添花」，而非「雪中送炭」。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><div class="section-tag">原则 3 · 商业视角</div><div>AI 工具在产品工作中的深度应用</div></div>
+</div>
+</body>
+</html>

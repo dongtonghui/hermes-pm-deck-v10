@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>20 · 目标社区与关键词</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  body { background: var(--dark-block); color: #fff; }
+  .page-masthead { border-bottom-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.55); }
+  .page-masthead .brand { color: #fff; }
+  .page-masthead .brand::before { background: var(--accent); }
+  .page-footer { border-top-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.55); }
+  .page-footer .section-tag::before { background: var(--accent); }
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; }
+  .left h2 { color: #fff; font-size: 68px; margin-bottom: 32px; line-height: 1.15; }
+  .left h2 .accent { color: var(--accent-light); }
+  .left .subtitle { color: rgba(255,255,255,0.75); font-size: 28px; margin-bottom: 48px; line-height: 1.5; }
+  .communities { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
+  .community { display: flex; align-items: center; gap: 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 18px 24px; }
+  .community .icon { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #fff; flex-shrink: 0; }
+  .community .name { font-size: var(--body); font-weight: 600; color: #fff; }
+  .community .desc { font-size: var(--tiny); color: rgba(255,255,255,0.6); }
+  .right .card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 32px; margin-bottom: 20px; }
+  .right .card h4 { color: var(--accent-light); font-family: var(--font-body); font-size: 22px; margin-bottom: 14px; }
+  .right .card p { color: rgba(255,255,255,0.8); font-size: var(--small); line-height: 1.6; }
+  .keyword-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .keyword { padding: 6px 14px; background: rgba(255,255,255,0.1); border-radius: 999px; font-size: 14px; color: rgba(255,255,255,0.85); }
+  .accent-pillar { position: absolute; right: 0; top: 0; bottom: 0; width: 18px; background: var(--accent); }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="accent-pillar"></div>
+
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>21 / 38 · 原则 2</div>
+  </div>
+
+  <div class="main">
+    <div class="left">
+      <div class="kicker" style="color: var(--accent-light);">Target Communities</div>
+      <h2>案例：植物灯 / <br><span class="accent">室内种植</span>相关社区</h2>
+      <p class="subtitle">选择和产品高度相关的子版块，抓取真实用户讨论，而不是泛泛抓取。</p>
+
+      <div class="communities">
+        <div class="community">
+          <div class="icon">R</div>
+          <div>
+            <div class="name">r/IndoorGarden</div>
+            <div class="desc">室内种植综合讨论</div>
+          </div>
+        </div>
+        <div class="community">
+          <div class="icon">R</div>
+          <div>
+            <div class="name">r/hydroponics</div>
+            <div class="desc">水培种植技术</div>
+          </div>
+        </div>
+        <div class="community">
+          <div class="icon">R</div>
+          <div>
+            <div class="name">r/SpaceBuckets</div>
+            <div class="desc">小型 DIY 种植空间</div>
+          </div>
+        </div>
+        <div class="community">
+          <div class="icon">R</div>
+          <div>
+            <div class="name">r/LEDgrowlights</div>
+            <div class="desc">LED 植物灯专业讨论</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="card">
+        <h4>核心关键词</h4>
+        <p>抓取帖子标题和内容中包含这些词的讨论，过滤掉无关内容。</p>
+        <div class="keyword-list">
+          <span class="keyword">grow light</span>
+          <span class="keyword">LED</span>
+          <span class="keyword">full spectrum</span>
+          <span class="keyword">yield</span>
+          <span class="keyword">heat</span>
+          <span class="keyword">noise</span>
+          <span class="keyword">energy</span>
+          <span class="keyword">price</span>
+          <span class="keyword">Aerogarden</span>
+          <span class="keyword">Gardyn</span>
+        </div>
+      </div>
+      <div class="card">
+        <h4>抓取目标</h4>
+        <p>不是统计"提到植物灯的次数"，而是提取用户关于光照效果、能耗、噪音、价格敏感度、竞品对比的真实观点和典型 quote。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">原则 2 · Reddit 情报抓取</div>
+    <div>AI 工具在硬件产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

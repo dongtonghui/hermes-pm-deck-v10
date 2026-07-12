@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>24 · 每周自动 Reddit 报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  body { background: var(--dark-block); color: #fff; }
+  .page-masthead { border-bottom-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.55); }
+  .page-masthead .brand { color: #fff; }
+  .page-masthead .brand::before { background: var(--accent); }
+  .page-footer { border-top-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.55); }
+  .page-footer .section-tag::before { background: var(--accent); }
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center; }
+  .left h2 { color: #fff; font-size: 68px; margin-bottom: 28px; line-height: 1.15; }
+  .left h2 .accent { color: var(--accent-light); }
+  .left .subtitle { color: rgba(255,255,255,0.75); font-size: 28px; margin-bottom: 40px; line-height: 1.5; }
+  .task-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 24px 28px; margin-bottom: 18px; }
+  .task-card h4 { color: var(--accent-light); font-family: var(--font-body); font-size: 20px; margin-bottom: 10px; }
+  .task-card p { color: rgba(255,255,255,0.8); font-size: var(--small); line-height: 1.55; }
+  .right { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 40px; }
+  .config-title { font-size: var(--small); color: rgba(255,255,255,0.6); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .config-row { display: flex; gap: 16px; margin-bottom: 16px; }
+  .config-key { width: 120px; font-size: var(--small); color: rgba(255,255,255,0.55); flex-shrink: 0; }
+  .config-val { flex: 1; font-size: var(--small); color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.06); border-radius: 8px; padding: 10px 14px; }
+  .accent-pillar { position: absolute; right: 0; top: 0; bottom: 0; width: 18px; background: var(--accent); }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="accent-pillar"></div>
+
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>25 / 38 · 原则 2</div>
+  </div>
+
+  <div class="main">
+    <div class="left">
+      <div class="kicker" style="color: var(--accent-light);">Scheduled Case</div>
+      <h2>案例：每周自动 <br><span class="accent">Reddit 情报报告</span></h2>
+      <p class="subtitle">把前面讲的情报抓取工作流，通过 Hermes 定时任务自动跑起来。</p>
+
+      <div class="task-card">
+        <h4>任务目标</h4>
+        <p>每周自动监控植物灯相关社区讨论，生成结构化洞察报告。</p>
+      </div>
+      <div class="task-card">
+        <h4>PM 的价值</h4>
+        <p>不再需要手动逛论坛，每周只看一份报告和关键 quote，就能把更多时间花在判断和决策上。</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="config-title">定时任务配置示例</div>
+      <div class="config-row">
+        <div class="config-key">触发条件</div>
+        <div class="config-val">每周一 09:00</div>
+      </div>
+      <div class="config-row">
+        <div class="config-key">输入来源</div>
+        <div class="config-val">pullpush.io Reddit API · 过去 7 天帖子</div>
+      </div>
+      <div class="config-row">
+        <div class="config-key">调用 Skill</div>
+        <div class="config-val">reddit-intelligence-analysis</div>
+      </div>
+      <div class="config-row">
+        <div class="config-key">输出格式</div>
+        <div class="config-val">Markdown 报告 + 主题分布 + 痛点 Top 10 + 典型原声</div>
+      </div>
+      <div class="config-row">
+        <div class="config-key">推送渠道</div>
+        <div class="config-val">飞书群 + 邮件</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">原则 4 · 定时任务</div>
+    <div>AI 工具在硬件产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

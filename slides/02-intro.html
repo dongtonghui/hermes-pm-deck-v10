@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>02 · 自我介绍</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; }
+  .left h2 { font-size: 72px; margin-bottom: 32px; }
+  .left .body-large { max-width: 640px; margin-bottom: 40px; }
+  .intro-point { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 24px; }
+  .intro-point .num { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--accent); line-height: 1; min-width: 48px; }
+  .intro-point h4 { font-family: var(--font-body); font-size: 24px; margin-bottom: 6px; }
+  .intro-point p { font-size: var(--small); color: var(--ink-secondary); line-height: 1.55; }
+  .right { display: flex; flex-direction: column; gap: 24px; }
+  .quote-card { background: var(--dark-block); color: #fff; border-radius: 16px; padding: 40px; }
+  .quote-card p { font-family: var(--font-display); font-size: 32px; line-height: 1.45; margin-bottom: 24px; }
+  .quote-card .source { font-size: var(--small); color: rgba(255,255,255,0.6); }
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .stat-card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 28px; text-align: center; }
+  .stat-card .num { font-family: var(--font-display); font-size: 56px; font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+  .stat-card .label { font-size: var(--small); color: var(--ink-secondary); }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>2 / 38 · 开场</div>
+  </div>
+
+  <div class="main">
+    <div class="left">
+      <div class="kicker">About Me</div>
+      <h2>我是谁，以及为什么聊这个<span class="accent">话题</span></h2>
+      <p class="body-large">从互联网平台到数字员工创业，我始终在关注一件事：把复杂的工作流程拆解成可协作、可复用的单元，让信息和执行不再堆在一个人身上。</p>
+
+      <div class="intro-point">
+        <div class="num">01</div>
+        <div>
+          <h4>互联网 &amp; 电商平台背景</h4>
+          <p>过往服务于头部互联网公司；做过以货架为主的跨境电商平台，也做过兴趣电商平台；B 端、C 端都接触过。</p>
+        </div>
+      </div>
+      <div class="intro-point">
+        <div class="num">02</div>
+        <div>
+          <h4>数字员工平台的创业尝试</h4>
+          <p>曾做一个"数字员工平台"：把日常工作链条拆解为不同的数字员工角色，让他们互相分工、配合完成日常工作。</p>
+        </div>
+      </div>
+      <div class="intro-point">
+        <div class="num">03</div>
+        <div>
+          <h4>AI 工作流落地实践</h4>
+          <p>今天分享的 4 条 AI 用法，是我过去几年从平台产品到数字员工创业，反复踩坑踩出来的。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="quote-card">
+        <p>"AI 协作的本质，不是替代人，而是把'一个人'做不过来的信息处理链条，拆成一组能持续配合、可复用的数字角色。"</p>
+        <div class="source">— 从数字员工平台到 AI 工作流的体会</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="num">B+C</div>
+          <div class="label">B端与C端产品经验</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">AI 员工</div>
+          <div class="label">数字角色分工协作</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">开场 · 自我介绍</div>
+    <div>AI 工具在硬件产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

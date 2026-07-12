@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>23 · 从人工到自动化</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; align-items: center; }
+  .left h2 { font-size: 72px; margin-bottom: 28px; }
+  .left .body-large { max-width: 620px; margin-bottom: 36px; }
+  .benefit { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+  .benefit .num { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--accent); line-height: 1; }
+  .benefit h4 { font-family: var(--font-body); font-size: 20px; margin-bottom: 6px; }
+  .benefit p { font-size: var(--small); color: var(--ink-secondary); line-height: 1.55; }
+  .right { background: var(--dark-block); border-radius: 20px; padding: 44px; color: #fff; }
+  .loop-title { font-size: var(--small); color: rgba(255,255,255,0.6); margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .loop { display: flex; flex-direction: column; gap: 16px; }
+  .loop-item { background: rgba(255,255,255,0.08); border-radius: 12px; padding: 20px 24px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 16px; }
+  .loop-item .num { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0; }
+  .loop-item p { font-size: var(--small); color: rgba(255,255,255,0.9); }
+  .loop-arrow { text-align: center; color: var(--accent-light); font-size: 24px; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>24 / 38 · 原则 2</div>
+  </div>
+
+  <div class="main">
+    <div class="left">
+      <div class="kicker">Automation</div>
+      <h2>从人工到自动化：<span class="accent">情报周报</span></h2>
+      <p class="body-large">把一次性的分析变成持续运转的自动化流程，PM 只需要审阅结论和做决策。</p>
+
+      <div class="benefit">
+        <div class="num">01</div>
+        <div>
+          <h4>节省时间</h4>
+          <p>原本 2-3 天的社区浏览压缩为定时生成的报告。</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="num">02</div>
+        <div>
+          <h4>保持一致性</h4>
+          <p>每次报告结构相同，便于历史趋势对比。</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="num">03</div>
+        <div>
+          <h4>不错过信号</h4>
+          <p>持续监控，及时发现话题热度和情绪变化。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="loop-title">自动化闭环</div>
+      <div class="loop">
+        <div class="loop-item">
+          <div class="num">1</div>
+          <p>每周一早上 9 点触发任务</p>
+        </div>
+        <div class="loop-arrow">↓</div>
+        <div class="loop-item">
+          <div class="num">2</div>
+          <p>自动抓取过去 7 天相关帖子</p>
+        </div>
+        <div class="loop-arrow">↓</div>
+        <div class="loop-item">
+          <div class="num">3</div>
+          <p>AI 生成结构化洞察报告</p>
+        </div>
+        <div class="loop-arrow">↓</div>
+        <div class="loop-item">
+          <div class="num">4</div>
+          <p>推送到飞书 / 邮件 / 钉钉</p>
+        </div>
+        <div class="loop-arrow">↓</div>
+        <div class="loop-item">
+          <div class="num">5</div>
+          <p>PM 审阅结论、复核关键 quote、做决策</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">原则 2 · Reddit 情报抓取</div>
+    <div>AI 工具在硬件产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

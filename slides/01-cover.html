@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>01 · 封面</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  body { background: var(--tech-bg); color: #fff; }
+  .slide-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  /* Ambient background */
+  .ambient-glow-1 {
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(196,92,38,0.22), transparent 65%);
+    top: -300px; right: -200px;
+  }
+  .ambient-glow-2 {
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(232,123,58,0.14), transparent 60%);
+    bottom: -200px; left: -150px;
+  }
+  .grid-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 1px) 0 0 / 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  .kicker-light {
+    color: var(--accent-light);
+    margin-bottom: 36px;
+    letter-spacing: 0.18em;
+    font-size: 26px;
+  }
+
+  h1 {
+    color: #fff;
+    font-size: 132px;
+    margin-bottom: 32px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    z-index: 2;
+  }
+  h1 .accent {
+    color: var(--accent-light);
+  }
+
+  .subtitle {
+    color: rgba(255,255,255,0.72);
+    font-size: 40px;
+    max-width: 1000px;
+    margin-bottom: 72px;
+    font-style: normal;
+    z-index: 2;
+  }
+
+  .meta {
+    display: flex;
+    gap: 48px;
+    font-size: var(--small);
+    color: rgba(255,255,255,0.55);
+    z-index: 2;
+  }
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 100px;
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(8px);
+  }
+  .meta-item::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-light);
+  }
+
+  .accent-pillar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 18px;
+    background: linear-gradient(180deg, var(--accent-light), var(--accent-dark));
+  }
+
+  /* Decorative ring */
+  .orbit-ring {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .orbit-ring::before {
+    content: "";
+    position: absolute;
+    inset: 60px;
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body class="tech-dark">
+<div class="slide-content">
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+  <div class="grid-overlay"></div>
+  <div class="orbit-ring"></div>
+
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>01 / 38 · 开场</div>
+  </div>
+
+  <div class="accent-pillar"></div>
+
+  <div class="kicker-light anim-fade-up">AI 协作四原则 · V9</div>
+  <h1 class="anim-fade-up delay-2">从聊天框到<br><span class="accent">数字员工团队</span></h1>
+  <p class="subtitle anim-fade-up delay-3">AI 工具在产品工作中的深度应用</p>
+  <div class="meta anim-fade-up delay-5">
+    <div class="meta-item">60 分钟内部分享</div>
+    <div class="meta-item">面向产品经理</div>
+    <div class="meta-item">分享 + 实战</div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">开场 · 封面</div>
+    <div>AI 工具在产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

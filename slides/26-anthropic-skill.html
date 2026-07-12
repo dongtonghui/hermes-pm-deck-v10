@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>26 · Anthropic Skill 规范</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  body { background: var(--dark-block); color: #fff; }
+  .page-masthead { border-bottom-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.55); }
+  .page-masthead .brand { color: #fff; }
+  .page-masthead .brand::before { background: var(--accent); }
+  .page-footer { border-top-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.55); }
+  .page-footer .section-tag::before { background: var(--accent); }
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; }
+  .left h2 { color: #fff; font-size: 64px; margin-bottom: 28px; line-height: 1.15; }
+  .left h2 .accent { color: var(--accent-light); }
+  .left .subtitle { color: rgba(255,255,255,0.75); font-size: 28px; margin-bottom: 36px; line-height: 1.5; }
+  .folder { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+  .folder h4 { color: var(--accent-light); font-family: var(--font-body); font-size: 20px; margin-bottom: 12px; }
+  .folder pre { color: rgba(255,255,255,0.8); font-size: var(--tiny); line-height: 1.6; font-family: "SF Mono", monospace; }
+  .right { display: flex; flex-direction: column; gap: 16px; }
+  .spec { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 22px 26px; }
+  .spec h4 { color: #fff; font-family: var(--font-body); font-size: 20px; margin-bottom: 8px; }
+  .spec p { color: rgba(255,255,255,0.7); font-size: var(--small); line-height: 1.55; }
+  .accent-pillar { position: absolute; right: 0; top: 0; bottom: 0; width: 18px; background: var(--accent); }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="accent-pillar"></div>
+
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>27 / 38 · 原则 4</div>
+  </div>
+
+  <div class="main">
+    <div class="left">
+      <div class="kicker" style="color: var(--accent-light);">Anthropic Skill Spec</div>
+      <h2>Anthropic <br><span class="accent">Skill 规范</span></h2>
+      <p class="subtitle">一个 Skill 是一个包含 SKILL.md 的目录。结构清晰、可移植、可被任何兼容工具调用。</p>
+
+      <div class="folder">
+        <h4>目录结构</h4>
+        <pre>skill-name/
+├── SKILL.md      # 核心说明文档
+├── README.md     # 可选：使用说明
+└── ...           # 可选：脚本、模板、示例</pre>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="spec">
+        <h4>SKILL.md 标准结构</h4>
+        <p>Frontmatter：name + description，说明 Skill 的调用名称和触发场景。</p>
+      </div>
+      <div class="spec">
+        <h4>01 · 何时使用</h4>
+        <p>描述使用场景和触发条件，让 AI 知道什么时候该调用这个 Skill。</p>
+      </div>
+      <div class="spec">
+        <h4>02 · 输入</h4>
+        <p>明确需要用户提供什么信息，避免 AI 自己编造。</p>
+      </div>
+      <div class="spec">
+        <h4>03 · 工作流</h4>
+        <p>分步骤说明 Skill 的执行流程，让输出可预期、可调试。</p>
+      </div>
+      <div class="spec">
+        <h4>04 · 输出格式 + 示例 + 注意事项</h4>
+        <p>明确输出结构、给一个输入/输出样例、列出边界条件和常见错误。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">原则 4 · Anthropic</div>
+    <div>AI 工具在硬件产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

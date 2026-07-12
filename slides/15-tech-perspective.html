@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>15 · 技术可行性分析</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .header { margin-bottom: 36px; }
+  .header h2 { font-size: 76px; margin-bottom: 16px; }
+  .header .subtitle { font-size: 28px; color: var(--ink-secondary); max-width: 960px; }
+
+  .risks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px; }
+  .risk { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
+  .risk .num { font-family: var(--font-display); font-size: 32px; font-weight: 700; color: var(--accent); margin-bottom: 10px; }
+  .risk h4 { font-family: var(--font-body); font-size: 22px; margin-bottom: 8px; }
+  .risk p { font-size: var(--small); color: var(--ink-secondary); line-height: 1.6; }
+
+  .better-way { background: var(--accent-pale); border: 1px solid var(--accent-light); border-radius: 16px; padding: 26px 32px; margin-bottom: 24px; display: flex; gap: 18px; align-items: flex-start; }
+  .better-way-icon { width: 48px; height: 48px; border-radius: 10px; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 22px; font-weight: 700; flex-shrink: 0; }
+  .better-way h4 { font-family: var(--font-body); font-size: 22px; margin-bottom: 6px; color: var(--accent-dark); }
+  .better-way p { font-size: var(--small); color: var(--ink-secondary); line-height: 1.6; }
+
+  .impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .impact-card { background: var(--paper-warm); border-radius: 12px; padding: 24px; text-align: center; }
+  .impact-card .metric { font-family: var(--font-display); font-size: 48px; font-weight: 900; color: var(--accent); margin-bottom: 8px; }
+  .impact-card .label { font-size: var(--small); color: var(--ink-secondary); }
+
+  .verdict { margin-top: 24px; background: var(--dark-block); color: #fff; border-radius: 16px; padding: 28px 36px; display: flex; gap: 20px; align-items: flex-start; }
+  .verdict-icon { width: 48px; height: 48px; border-radius: 10px; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 22px; font-weight: 700; flex-shrink: 0; }
+  .verdict h4 { font-family: var(--font-body); font-size: 24px; margin-bottom: 8px; }
+  .verdict p { font-size: var(--small); color: rgba(255,255,255,0.75); line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead"><div class="brand">AI 工具深度应用</div><div>16 / 38 · 原则 3</div></div>
+
+  <div class="main">
+    <div class="header">
+      <div class="kicker">Tech Lens</div>
+      <h2>技术视角：<span class="accent">加了什么，影响了什么</span>？</h2>
+      <p class="subtitle">氛围灯不是软件开关那么简单，它会影响整机的成本、散热、可靠性和认证路径。</p>
+    </div>
+
+    <div class="risks">
+      <div class="risk">
+        <div class="num">01</div>
+        <h4>硬件增量</h4>
+        <p>额外 LED 灯珠、独立驱动电路、调光/调色控制模块、新增 PCB 面积与连接器，直接增加 BOM 成本。</p>
+      </div>
+      <div class="risk">
+        <div class="num">02</div>
+        <h4>散热与功耗</h4>
+        <p>植物灯本身发热量大，额外 LED 会进一步推高整机温度，需要重新评估散热、噪音和能效等级。</p>
+      </div>
+      <div class="risk">
+        <div class="num">03</div>
+        <h4>软件与可靠性</h4>
+        <p>调色、定时、场景联动、App 界面都需要新增固件和交互。更多元器件也意味着更多失效点。</p>
+      </div>
+    </div>
+
+    <div class="better-way">
+      <div class="better-way-icon">↳</div>
+      <div>
+        <h4>真实痛点的更优技术解</h4>
+        <p>用户抱怨的是光污染，不是缺少氛围灯。技术上更轻量的解法是：可调亮度 + 日落模式 + 遮光罩/柔光板，而不是额外增加一套 RGB 系统。</p>
+      </div>
+    </div>
+
+    <div class="impact">
+      <div class="impact-card">
+        <div class="metric">+</div>
+        <div class="label">BOM 成本上升</div>
+      </div>
+      <div class="impact-card">
+        <div class="metric">↑</div>
+        <div class="label">散热设计难度</div>
+      </div>
+      <div class="impact-card">
+        <div class="metric">×</div>
+        <div class="label">测试与认证项</div>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <div class="verdict-icon">→</div>
+      <div>
+        <h4>技术视角结论</h4>
+        <p>氛围灯可实现，但会显著增加整机复杂度。如果它不能带来明确的溢价或销量提升，技术投入不成正比。解决光污染反而是更高 ROI 的方向。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><div class="section-tag">原则 3 · 技术视角</div><div>AI 工具在产品工作中的深度应用</div></div>
+</div>
+</body>
+</html>

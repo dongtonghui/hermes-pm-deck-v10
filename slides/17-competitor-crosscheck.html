@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>17 · 竞品视角与交叉校验</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .header { margin-bottom: 32px; }
+  .header h2 { font-size: 76px; margin-bottom: 16px; }
+  .header .subtitle { font-size: 28px; color: var(--ink-secondary); max-width: 960px; }
+
+  .competitors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
+  .competitor { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
+  .competitor h4 { font-family: var(--font-body); font-size: 22px; margin-bottom: 12px; }
+  .competitor .tag { display: inline-block; font-size: var(--tiny); color: var(--accent-dark); background: var(--accent-pale); padding: 4px 10px; border-radius: 6px; margin-bottom: 12px; }
+  .competitor p { font-size: var(--small); color: var(--ink-secondary); line-height: 1.6; }
+
+  .crosscheck { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .check-card { border-radius: 16px; padding: 28px; }
+  .check-card.findings { background: var(--paper-warm); border: 1px solid var(--line); }
+  .check-card.conclusion { background: var(--dark-block); color: #fff; }
+  .check-card h4 { font-family: var(--font-body); font-size: 22px; margin-bottom: 14px; }
+  .check-card.findings h4 { color: var(--accent-dark); }
+  .check-card.conclusion h4 { color: var(--accent-light); }
+  .check-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .check-card li { font-size: var(--small); padding-left: 24px; position: relative; line-height: 1.55; }
+  .check-card.findings li { color: var(--ink-secondary); }
+  .check-card.conclusion li { color: rgba(255,255,255,0.85); }
+  .check-card li::before { content: "→"; position: absolute; left: 0; }
+  .check-card.findings li::before { color: var(--accent); }
+  .check-card.conclusion li::before { color: var(--accent-light); }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead"><div class="brand">AI 工具深度应用</div><div>18 / 38 · 原则 3</div></div>
+
+  <div class="main">
+    <div class="header">
+      <div class="kicker">Competitor Lens & Cross-Check</div>
+      <h2>竞品视角：<span class="accent">别人怎么做的</span>？</h2>
+      <p class="subtitle">看主流竞品是否把氛围灯作为核心卖点，能帮你判断这是行业共识还是伪需求。</p>
+    </div>
+
+    <div class="competitors">
+      <div class="competitor">
+        <div class="tag">主流品牌</div>
+        <h4>功能参数导向</h4>
+        <p>Most main-brand grow lights emphasize spectrum, PPFD, and coverage. Ambient lighting is rarely a headline feature.</p>
+      </div>
+      <div class="competitor">
+        <div class="tag">高端线 / 概念产品</div>
+        <h4>氛围灯偶有出现</h4>
+        <p>Ambiance features appear mostly in premium lines, lifestyle-oriented crowdfunding campaigns, or concept designs—not in volume SKUs.</p>
+      </div>
+      <div class="competitor">
+        <div class="tag">用户评价</div>
+        <h4>「有没有用」争议大</h4>
+        <p>Where ambient light is mentioned, reviews are polarized: some love the look, others call it a gimmick that doesn't help plants.</p>
+      </div>
+    </div>
+
+    <div class="crosscheck">
+      <div class="check-card findings">
+        <h4>交叉校验发现</h4>
+        <ul>
+          <li>用户视角：1200 帖中仅 1 条明确提及氛围灯；真实痛点是光污染</li>
+          <li>技术视角：增加成本、复杂度、散热与可靠性风险</li>
+          <li>商业视角：难以支撑溢价，卖点易被跟进</li>
+          <li>竞品视角：主流品牌不以氛围灯为核心卖点</li>
+        </ul>
+      </div>
+      <div class="check-card conclusion">
+        <h4>最终结论</h4>
+        <ul>
+          <li>氛围灯大概率是伪需求，不建议作为默认标配</li>
+          <li>优先解决光污染：可调亮度 + 定时/日落模式 + 遮光/柔光设计</li>
+          <li>如一定要加，建议用低亮度暖白光微光，而非 RGB 炫彩</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><div class="section-tag">原则 3 · 竞品与结论</div><div>AI 工具在产品工作中的深度应用</div></div>
+</div>
+</body>
+</html>

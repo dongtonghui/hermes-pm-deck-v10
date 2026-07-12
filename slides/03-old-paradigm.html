@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>03 · 旧范式的痛点</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  body { background: var(--tech-bg); color: #fff; overflow: hidden; }
+  .slide-content { display: flex; flex-direction: column; position: relative; }
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* 标题区 */
+  .hero { position: relative; margin-bottom: 24px; }
+  .hero h2 {
+    color: #fff;
+    font-size: 88px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    text-shadow: 0 0 60px rgba(232,123,58,0.18);
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+    animation: heroIn 1s var(--ease-expo) forwards;
+  }
+  .hero h2 .accent {
+    color: var(--accent-light);
+    text-shadow: 0 0 80px rgba(232,123,58,0.45);
+  }
+  @keyframes heroIn {
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .prompt {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 28px;
+    color: rgba(255,255,255,0.72);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s var(--ease-expo) 0.4s forwards;
+  }
+  .prompt::before {
+    content: "";
+    width: 10px; height: 10px;
+    background: var(--accent-light);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--accent-light);
+    animation: pulseDot 2s ease-in-out infinite;
+  }
+  @keyframes pulseDot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.6; }
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 三个痛点舞台 */
+  .stage {
+    position: relative;
+    width: 1300px;
+    height: 340px;
+    margin-top: 56px;
+  }
+  .pain-point {
+    position: absolute;
+    width: 360px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 20px;
+    padding: 38px;
+    text-align: left;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.05);
+    opacity: 0;
+    transform: translateY(60px) scale(0.92);
+    transition: opacity 0.8s var(--ease-expo), transform 0.8s var(--ease-expo), box-shadow 0.5s ease;
+    pointer-events: none;
+  }
+  .pain-point.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+  .pain-point::before {
+    content: "";
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
+    border-radius: 20px 20px 0 0;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  .pain-point.visible::before { opacity: 1; }
+  .pain-point:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 0 30px rgba(232,123,58,0.12), inset 0 1px 0 rgba(255,255,255,0.08); }
+
+  /* 三个卡片的最终位置 */
+  .pain-point[data-index="0"] { left: 0; top: 20px; }
+  .pain-point[data-index="1"] { left: 470px; top: 0; }
+  .pain-point[data-index="2"] { left: 940px; top: 20px; }
+
+  .pain-point .icon-wrap {
+    position: relative;
+    width: 64px; height: 64px;
+    margin-bottom: 22px;
+  }
+  .pain-point .ring {
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--accent-light);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.6s ease, transform 0.6s var(--ease-expo);
+  }
+  .pain-point.visible .ring {
+    opacity: 0.35;
+    transform: scale(1.6);
+  }
+  .pain-point .icon {
+    position: relative;
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-light), var(--accent-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    box-shadow: 0 0 30px rgba(232,123,58,0.35);
+  }
+  .pain-point h4 { color: #fff; font-family: var(--font-body); font-size: 26px; margin-bottom: 12px; }
+  .pain-point p { color: rgba(255,255,255,0.65); font-size: var(--small); line-height: 1.6; }
+
+  /* 光柱 */
+  .beam {
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, var(--accent-light), transparent);
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: opacity 0.4s ease, transform 0.7s var(--ease-expo);
+    filter: blur(1px);
+  }
+  .beam.active { opacity: 0.7; transform: scaleY(1); }
+  .beam[data-index="0"] { left: 180px; top: -40px; height: 80px; }
+  .beam[data-index="1"] { left: 650px; top: -60px; height: 100px; }
+  .beam[data-index="2"] { left: 1120px; top: -40px; height: 80px; }
+
+  /* 底部提示 */
+  .hint {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: var(--tiny);
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+  .hint.hidden { opacity: 0; }
+
+  /* 总结语 */
+  .summary {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    font-size: 24px;
+    color: var(--accent-light);
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s var(--ease-expo);
+    pointer-events: none;
+  }
+  .summary.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* 粒子背景 */
+  .particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .particle {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    animation: float 12s linear infinite;
+  }
+  @keyframes float {
+    0% { transform: translateY(110vh) translateX(0); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-10vh) translateX(40px); opacity: 0; }
+  }
+
+  /* 网格 + 光晕 */
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 1px) 0 0 / 32px 32px;
+    pointer-events: none;
+    opacity: 0.5;
+    z-index: 0;
+  }
+  .glow {
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,92,38,0.14), transparent 60%);
+    filter: blur(80px);
+    top: -250px; left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+</style>
+</head>
+<body class="tech-dark">
+<div class="slide-content">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="particles" id="particles"></div>
+
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>3 / 38 · 开场</div>
+  </div>
+
+  <div class="main">
+    <div class="hero">
+      <div class="kicker" style="color: var(--accent-light); justify-content: center; margin-bottom: 28px;">The Trap</div>
+      <h2>为什么你用 AI 总觉得<span class="accent">差点意思</span>？</h2>
+      <div class="prompt">大家目前是怎么用 AI 的？</div>
+    </div>
+
+    <div class="stage" id="stage">
+      <div class="beam" data-index="0"></div>
+      <div class="beam" data-index="1"></div>
+      <div class="beam" data-index="2"></div>
+
+      <div class="pain-point" data-index="0">
+        <div class="icon-wrap">
+          <div class="ring"></div>
+          <div class="icon">01</div>
+        </div>
+        <h4>当搜索引擎用</h4>
+        <p>得到的是常识性答案，没有针对你的具体场景做推理。</p>
+      </div>
+
+      <div class="pain-point" data-index="1">
+        <div class="icon-wrap">
+          <div class="ring"></div>
+          <div class="icon">02</div>
+        </div>
+        <h4>当文案工具用</h4>
+        <p>写得出来，但靠不住——数据来源、约束条件、决策依据都是空的。</p>
+      </div>
+
+      <div class="pain-point" data-index="2">
+        <div class="icon-wrap">
+          <div class="ring"></div>
+          <div class="icon">03</div>
+        </div>
+        <h4>当一次性助手用</h4>
+        <p>每次都要重新教 AI 你的背景，无法累积成可复用的工作流。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hint" id="hint">点击或按空格继续 · Click or Space</div>
+  <div class="summary" id="summary">这三种用法，本质上都把 AI 当成了一次性工具</div>
+
+  <div class="page-footer">
+    <div class="section-tag">开场 · 旧范式的痛点</div>
+    <div>AI 工具在产品工作中的深度应用</div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // 生成背景粒子
+  const particles = document.getElementById('particles');
+  for (let i = 0; i < 36; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (10 + Math.random() * 14) + 's';
+    p.style.animationDelay = (Math.random() * -12) + 's';
+    p.style.opacity = 0.2 + Math.random() * 0.4;
+    particles.appendChild(p);
+  }
+
+  let step = 0;
+  const totalSteps = 4; // 3 个痛点 + 1 次翻页
+  const points = document.querySelectorAll('.pain-point');
+  const beams = document.querySelectorAll('.beam');
+  const hint = document.getElementById('hint');
+  const summary = document.getElementById('summary');
+
+  function advance() {
+    if (step < 3) {
+      points[step].classList.add('visible');
+      beams[step].classList.add('active');
+      step++;
+      if (step === 3) {
+        hint.classList.add('hidden');
+        summary.classList.add('visible');
+      }
+    } else {
+      // 通知外层 deck 翻页
+      if (window.parent !== window) {
+        window.parent.postMessage('deck-next', '*');
+      }
+    }
+  }
+
+  document.addEventListener('click', advance);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === ' ' || e.key === 'ArrowRight' || e.key === 'Enter') {
+      e.preventDefault();
+      advance();
+    }
+  });
+})();
+</script>
+</body>
+</html>

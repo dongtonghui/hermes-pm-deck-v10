@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>04 · 4 条原则</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  body { background: var(--tech-bg); color: #fff; }
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .header { margin-bottom: 48px; text-align: center; }
+  .header h2 { color: #fff; font-size: 84px; margin-bottom: 20px; }
+  .header h2 .accent { color: var(--accent-light); }
+  .header .subtitle { color: rgba(255,255,255,0.72); font-size: 30px; max-width: 980px; margin: 0 auto; }
+
+  .principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .principle {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 18px;
+    padding: 36px;
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.05);
+    transition: transform 220ms cubic-bezier(0.4,0,0.2,1), border-color 220ms, box-shadow 220ms;
+  }
+  .principle:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.22);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.30), 0 0 28px rgba(196,92,38,0.12), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+  .principle .num {
+    font-family: var(--font-display);
+    font-size: 44px;
+    font-weight: 900;
+    color: var(--accent-light);
+    line-height: 1;
+    min-width: 60px;
+    text-shadow: 0 0 20px rgba(232,123,58,0.35);
+  }
+  .principle h4 { color: #fff; font-family: var(--font-body); font-size: 26px; margin-bottom: 12px; }
+  .principle .dont { color: rgba(255,255,255,0.48); font-size: var(--small); text-decoration: line-through; margin-bottom: 6px; }
+  .principle .do { color: rgba(255,255,255,0.85); font-size: var(--small); line-height: 1.6; }
+
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 1px) 0 0 / 32px 32px;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,92,38,0.12), transparent 60%);
+    filter: blur(60px);
+    top: -180px; right: -120px;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body class="tech-dark">
+<div class="slide-content">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>5 / 38 · 开场</div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="kicker" style="color: var(--accent-light); justify-content: center;">Four Principles</div>
+      <h2 class="anim-fade-up delay-1">新范式下的 <span class="accent">4 条原则</span></h2>
+      <p class="subtitle anim-fade-up delay-2">改变你和 AI 协作的 4 个习惯。接下来每一部分，都会用实战演示它怎么落地。</p>
+    </div>
+
+    <div class="principles">
+      <div class="principle anim-fade-up delay-3">
+        <div class="num">01</div>
+        <div>
+          <h4>给目标，不要只给任务</h4>
+          <p class="dont">"帮我写一份 PRD"</p>
+          <p class="do">说清「要解决什么问题、给谁用、受什么约束」，让 AI 先给方案，人再确认。</p>
+        </div>
+      </div>
+      <div class="principle anim-fade-up delay-4">
+        <div class="num">02</div>
+        <div>
+          <h4>喂真实数据，不要空口问</h4>
+          <p class="dont">"用户会喜欢氛围灯吗？"</p>
+          <p class="do">把真实评论、文档、网页丢给 AI，让结论有来源，而不是凭空推测。</p>
+        </div>
+      </div>
+      <div class="principle anim-fade-up delay-5">
+        <div class="num">03</div>
+        <div>
+          <h4>多角色互相挑毛病，不要单点信任</h4>
+          <p class="dont">"AI 说值得做，那就做"</p>
+          <p class="do">让不同角色的 Agent 分别找证据、挑毛病，一个 Agent 的盲区由另一个补上。</p>
+        </div>
+      </div>
+      <div class="principle anim-fade-up delay-6">
+        <div class="num">04</div>
+        <div>
+          <h4>封装 + 自动化，不要每次都从零写</h4>
+          <p class="dont">"每次需要都重新写 prompt"</p>
+          <p class="do">把重复流程变成 Skill，定时执行，结果自动推送到你常用的消息渠道。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">开场 · 4 条原则</div>
+    <div>AI 工具在产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>
