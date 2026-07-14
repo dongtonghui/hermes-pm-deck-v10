@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>05 · 议程</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .header { margin-bottom: 44px; }
+  .header h2 { font-size: 84px; margin-bottom: 16px; }
+  .header .subtitle { font-size: 28px; color: var(--ink-secondary); max-width: 900px; }
+  .modules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-bottom: 40px; }
+  .module { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 32px; box-shadow: 0 6px 24px rgba(28,27,24,0.06); display: flex; gap: 22px; align-items: flex-start; }
+  .module .num { font-family: var(--font-display); font-size: 44px; font-weight: 900; color: var(--accent); line-height: 1; min-width: 56px; }
+  .module h4 { font-family: var(--font-body); font-size: 24px; margin-bottom: 8px; }
+  .module p { font-size: var(--tiny); color: var(--ink-secondary); line-height: 1.6; }
+  .takeaways { background: var(--dark-block); color: #fff; border-radius: 16px; padding: 28px 36px; }
+  .takeaways h4 { font-family: var(--font-body); font-size: 22px; margin-bottom: 14px; color: var(--accent-light); }
+  .takeaways ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px 28px; list-style: none; }
+  .takeaways li { font-size: var(--tiny); color: rgba(255,255,255,0.85); padding-left: 22px; position: relative; }
+  .takeaways li::before { content: "→"; position: absolute; left: 0; color: var(--accent-light); }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>7 / 39 · 开场</div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="kicker">Agenda</div>
+      <h2>今天会讲<span class="accent">什么</span></h2>
+      <p class="subtitle">60 分钟，4 条原则。现场讲授顺序为 1 → 3 → 2 → 4，因为植物灯案例会自然带出多 Agent 交叉校验。</p>
+    </div>
+
+    <div class="modules">
+      <div class="module">
+        <div class="num">01</div>
+        <div>
+          <h4>给目标，不要只给任务</h4>
+          <p>用植物生长照射仪的「氛围灯功能」案例，演示如何把"帮我写 PRD"改成"判断这个功能是否值得做"。</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="num">02</div>
+        <div>
+          <h4>喂真实数据，不要空口问</h4>
+          <p>用 Reddit 等社区真实数据，展示如何抓取海外用户声音，并把它变成可执行的产品洞察。</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="num">03</div>
+        <div>
+          <h4>多角色互相挑毛病，不要单点信任</h4>
+          <p>用 4 个 Agent 分别从用户、技术、商业、竞品视角交叉校验，证明氛围灯大概率是伪需求。</p>
+        </div>
+      </div>
+      <div class="module">
+        <div class="num">04</div>
+        <div>
+          <h4>封装 + 自动化，不要每次都从零写</h4>
+          <p>把 Reddit 情报抓取和多 Agent 分析封装成 Skill，加上定时任务和消息推送，构建完整自动化闭环。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="takeaways">
+      <h4>你将带走</h4>
+      <ul>
+        <li>需求目标表达框架</li>
+        <li>多 Agent 需求分析模板</li>
+        <li>Reddit / 社区情报抓取模板</li>
+        <li>Anthropic Skill 规范模板</li>
+        <li>Hermes Skill 机制对照说明</li>
+        <li>定时任务四要素清单</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">开场 · 议程</div>
+    <div>AI 工具在产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

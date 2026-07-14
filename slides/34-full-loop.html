@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>32 · 完整自动化闭环</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  body { background: var(--tech-bg); color: #fff; }
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 24px; }
+  .header { margin-bottom: 28px; text-align: center; }
+  .header h2 { color: #fff; font-size: 76px; margin-bottom: 14px; }
+  .header h2 .accent { color: var(--accent-light); }
+  .header .subtitle { color: rgba(255,255,255,0.75); font-size: 26px; max-width: 900px; margin: 0 auto; }
+
+  /* ─── Workflow canvas ─── */
+  .workflow-canvas {
+    position: relative;
+    width: 100%;
+    height: 580px;
+    border-radius: 20px;
+    background:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.10) 1px, transparent 1px) 0 0 / 28px 28px,
+      linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+    border: 1px solid rgba(255,255,255,0.10);
+    overflow: hidden;
+  }
+  .workflow-canvas::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(120% 80% at 50% 0%, rgba(196,92,38,0.08), transparent 60%);
+    pointer-events: none;
+  }
+
+  /* ─── SVG connections ─── */
+  .connections {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .connections path {
+    fill: none;
+    stroke: rgba(255,255,255,0.30);
+    stroke-width: 2.5;
+    animation: linePulse 2.8s ease-in-out infinite;
+  }
+  .connections path:nth-child(5) { animation-delay: 0.4s; }
+  .connections path:nth-child(6) { animation-delay: 0.8s; }
+  .connections path:nth-child(7) { animation-delay: 1.2s; }
+  .connections path:nth-child(8) { animation-delay: 1.6s; }
+  .connections .loopback {
+    stroke: var(--accent-light);
+    stroke-width: 3;
+    stroke-dasharray: 8 6;
+    opacity: 0.90;
+    animation: linePulse 3.2s ease-in-out infinite;
+  }
+  @keyframes linePulse {
+    0%, 100% { stroke-opacity: 0.30; }
+    50% { stroke-opacity: 0.60; }
+  }
+
+  /* ─── Nodes ─── */
+  .nodes-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+  .workflow-node {
+    position: absolute;
+    width: 244px;
+    background: rgba(30,30,28,0.92);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 14px;
+    padding: 18px 20px 18px 22px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .workflow-node:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 56px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.10), 0 0 32px var(--node-color);
+    border-color: rgba(255,255,255,0.30);
+  }
+  .workflow-node::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 4px;
+    border-radius: 0 3px 3px 0;
+    background: var(--node-color);
+    box-shadow: 0 0 18px var(--node-color);
+  }
+  @keyframes nodeGlow {
+    0%, 100% { box-shadow: 0 12px 36px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06); }
+    50% { box-shadow: 0 12px 36px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 24px var(--node-color); }
+  }
+
+  .node-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--node-color);
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .node-icon svg { width: 24px; height: 24px; fill: currentColor; }
+  .node-text { min-width: 0; }
+  .node-title {
+    font-family: var(--font-body);
+    font-size: 19px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .node-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.45;
+  }
+  .node-tag {
+    position: absolute;
+    top: -11px;
+    right: 16px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: var(--node-color);
+    color: #000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+
+  /* ─── Ports ─── */
+  .port {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--node-color);
+    border: 2px solid #1e1e1c;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.18);
+    z-index: 3;
+  }
+  .port-in { left: -6px; top: 50%; transform: translateY(-50%); }
+  .port-out { right: -6px; top: 50%; transform: translateY(-50%); }
+  .port-top { top: -6px; left: 50%; transform: translateX(-50%); }
+  .port-bottom { bottom: -6px; left: 50%; transform: translateX(-50%); }
+
+  /* ─── Loop label ─── */
+  .loop-label {
+    position: absolute;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(36,35,32,0.9);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(232,123,58,0.35);
+    z-index: 4;
+  }
+
+  /* ─── Legend ─── */
+  .workflow-legend {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 24px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+
+  /* ─── Flow particles ─── */
+  .flow-particle {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(255,255,255,0.8);
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+  }
+</style>
+</head>
+<body class="tech-dark" style="background: var(--tech-bg);">
+<div class="slide-content">
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>34 / 39 · 原则 4</div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="kicker" style="color: var(--accent-light); justify-content: center;">Full Loop</div>
+      <h2>一个完整的<span class="accent">自动化闭环</span>示例</h2>
+      <p class="subtitle">像 n8n 编排工作流一样，把"指令 → 执行 → 推送 → 决策 → 优化"串成可自动运行的节点网络。</p>
+    </div>
+
+    <div class="workflow-canvas" id="canvas">
+      <svg class="connections" viewBox="0 0 1792 580" preserveAspectRatio="none">
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="rgba(255,255,255,0.35)" />
+          </marker>
+          <marker id="arrowhead-loop" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#E87B3A" />
+          </marker>
+        </defs>
+
+        <!-- Row 1: left to right (port to port, y = node center 111) -->
+        <path d="M244,111 C300,111 320,111 376,111" marker-end="url(#arrowhead)" />
+        <path d="M620,111 C680,111 692,111 752,111" marker-end="url(#arrowhead)" />
+        <path d="M996,111 C1056,111 1068,111 1128,111" marker-end="url(#arrowhead)" />
+        <path d="M1372,111 C1432,111 1444,111 1504,111" marker-end="url(#arrowhead)" />
+
+        <!-- Down to user decision (node 5 bottom port -> node 6 top port) -->
+        <path d="M1626,158 C1626,235 1250,235 1250,300" marker-end="url(#arrowhead)" />
+
+        <!-- Row 2: right to left (node 6 right port -> node 7 left port) -->
+        <path d="M1372,341 C1300,341 900,341 752,341" marker-end="url(#arrowhead)" />
+
+        <!-- Loopback to Hermes: record-feedback bottom -> Hermes top port, wide arc -->
+        <path class="loopback" d="M874,388 C874,520 498,520 498,70" marker-end="url(#arrowhead-loop)" />
+      </svg>
+
+      <div class="loop-label anim-fade-up delay-7" style="left: 580px; top: 470px;">Feedback Loop</div>
+
+      <!-- Row 1 -->
+      <div class="workflow-node anim-scale-in delay-3" style="--node-color:#00B4D8; left:0px; top:70px;">
+        <div class="node-tag">Trigger</div>
+        <div class="port port-out"></div>
+        <div class="node-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+        </div>
+        <div class="node-text">
+          <div class="node-title">飞书消息</div>
+          <div class="node-desc">用户发送自然语言指令</div>
+        </div>
+      </div>
+
+      <div class="workflow-node anim-scale-in delay-4" style="--node-color:#F59E0B; left:376px; top:70px;">
+        <div class="port port-in"></div>
+        <div class="port port-out"></div>
+        <div class="port port-bottom"></div>
+        <div class="node-icon">
+          <svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+        </div>
+        <div class="node-text">
+          <div class="node-title">Hermes 识别</div>
+          <div class="node-desc">触发 reddit-intelligence Skill</div>
+        </div>
+      </div>
+
+      <div class="workflow-node anim-scale-in delay-5" style="--node-color:#3B82F6; left:752px; top:70px;">
+        <div class="port port-in"></div>
+        <div class="port port-out"></div>
+        <div class="node-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        </div>
+        <div class="node-text">
+          <div class="node-title">抓取 Reddit</div>
+          <div class="node-desc">过去 7 天相关帖子和评论</div>
+        </div>
+      </div>
+
+      <div class="workflow-node anim-scale-in delay-6" style="--node-color:#8B5CF6; left:1128px; top:70px;">
+        <div class="port port-in"></div>
+        <div class="port port-out"></div>
+        <div class="node-icon">
+          <svg viewBox="0 0 24 24"><path d="M19.46 8.04l2.12-2.11c.19-.19.19-.5 0-.7l-1.41-1.41c-.2-.19-.51-.19-.71 0l-2.12 2.12c-1.37-.54-2.88-.83-4.46-.83-1.57 0-3.08.29-4.45.83L5.3 2.82c-.2-.19-.51-.19-.71 0L3.18 4.23c-.2.2-.2.51 0 .71l2.12 2.11C3.97 9.35 3 11.65 3 14c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.35-.97-4.65-2.55-6.96zM12 21c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/></svg>
+        </div>
+        <div class="node-text">
+          <div class="node-title">AI 分析生成</div>
+          <div class="node-desc">主题聚类、情感分析、出报告</div>
+        </div>
+      </div>
+
+      <div class="workflow-node anim-scale-in delay-5" style="--node-color:#10B981; left:1504px; top:70px;">
+        <div class="port port-in"></div>
+        <div class="port port-bottom"></div>
+        <div class="node-icon">
+          <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </div>
+        <div class="node-text">
+          <div class="node-title">推送飞书</div>
+          <div class="node-desc">报告 + 关键 quote 送达用户</div>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="workflow-node anim-scale-in delay-6" style="--node-color:var(--accent-light); left:1128px; top:300px;">
+        <div class="port port-top"></div>
+        <div class="port port-out"></div>
+        <div class="node-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <div class="node-text">
+          <div class="node-title">用户决策</div>
+          <div class="node-desc">查看报告、追问、做判断</div>
+        </div>
+      </div>
+
+      <div class="workflow-node anim-scale-in delay-7" style="--node-color:#A855F7; left:752px; top:300px;">
+        <div class="port port-in"></div>
+        <div class="port port-top"></div>
+        <div class="node-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+        </div>
+        <div class="node-text">
+          <div class="node-title">记录反馈 & 优化</div>
+          <div class="node-desc">AI 学习偏好，迭代下次输出</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="workflow-legend anim-fade-up delay-8">
+      <div class="legend-item"><span class="legend-dot" style="--c:#00B4D8"></span>触发</div>
+      <div class="legend-item"><span class="legend-dot" style="--c:#F59E0B"></span>编排</div>
+      <div class="legend-item"><span class="legend-dot" style="--c:#3B82F6"></span>数据</div>
+      <div class="legend-item"><span class="legend-dot" style="--c:#8B5CF6"></span>AI 处理</div>
+      <div class="legend-item"><span class="legend-dot" style="--c:#10B981"></span>触达</div>
+      <div class="legend-item"><span class="legend-dot" style="--c:var(--accent-light)"></span>人在回路</div>
+      <div class="legend-item"><span class="legend-dot" style="--c:#A855F7"></span>迭代</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">原则 4 · 自动化闭环</div>
+    <div>AI 工具在产品工作中的深度应用</div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const canvas = document.getElementById('canvas');
+    const paths = [
+      { from: {x:244, y:111}, to: {x:376, y:111}, color:'#00B4D8' },
+      { from: {x:620, y:111}, to: {x:752, y:111}, color:'#F59E0B' },
+      { from: {x:996, y:111}, to: {x:1128, y:111}, color:'#3B82F6' },
+      { from: {x:1372, y:111}, to: {x:1504, y:111}, color:'#8B5CF6' },
+      { from: {x:1626, y:158}, to: {x:1250, y:300}, color:'#10B981', curve:'down' },
+      { from: {x:1372, y:341}, to: {x:752, y:341}, color:'var(--accent-light)' },
+      { from: {x:874, y:388}, to: {x:498, y:70}, color:'#A855F7', curve:'loop' }
+    ];
+
+    function createParticle(pathSpec, delay) {
+      const p = document.createElement('div');
+      p.className = 'flow-particle';
+      p.style.background = pathSpec.color;
+      p.style.boxShadow = `0 0 12px ${pathSpec.color}`;
+      canvas.appendChild(p);
+
+      const duration = pathSpec.curve ? 1800 : 1200;
+      const start = performance.now() + delay;
+
+      function ease(t) { return t < 0.5 ? 2*t*t : -1 + (4 - 2*t)*t; }
+
+      function step(now) {
+        const elapsed = now - start;
+        if (elapsed < 0) { requestAnimationFrame(step); return; }
+        const tRaw = (elapsed % duration) / duration;
+        const t = ease(tRaw);
+
+        let x, y;
+        if (pathSpec.curve === 'down') {
+          x = pathSpec.from.x + (pathSpec.to.x - pathSpec.from.x) * t;
+          const midY = Math.max(pathSpec.from.y, pathSpec.to.y);
+          y = (1-t)*(1-t)*pathSpec.from.y + 2*(1-t)*t*midY + t*t*pathSpec.to.y;
+        } else if (pathSpec.curve === 'loop') {
+          x = pathSpec.from.x + (pathSpec.to.x - pathSpec.from.x) * t;
+          const midY = 480;
+          y = (1-t)*(1-t)*pathSpec.from.y + 2*(1-t)*t*midY + t*t*pathSpec.to.y;
+        } else {
+          x = pathSpec.from.x + (pathSpec.to.x - pathSpec.from.x) * t;
+          y = pathSpec.from.y + (pathSpec.to.y - pathSpec.from.y) * t;
+        }
+
+        p.style.left = (x - 4) + 'px';
+        p.style.top = (y - 4) + 'px';
+        p.style.opacity = tRaw < 0.08 ? tRaw/0.08 : (tRaw > 0.92 ? (1-tRaw)/0.08 : 1);
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    paths.forEach((p, i) => {
+      createParticle(p, i * 250);
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>21 · Reddit 情报工作流</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .header { margin-bottom: 44px; }
+  .header h2 { font-size: 72px; margin-bottom: 16px; }
+  .header .subtitle { font-size: 28px; color: var(--ink-secondary); max-width: 960px; }
+  .timeline { display: flex; gap: 20px; position: relative; }
+  .timeline::before { content: ""; position: absolute; top: 36px; left: 50px; right: 50px; height: 4px; background: var(--line); z-index: 0; }
+  .step { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
+  .step-num { width: 72px; height: 72px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-en); font-size: 28px; font-weight: 700; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(196,92,38,0.3); }
+  .step-content { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 24px; width: 100%; box-shadow: 0 4px 20px rgba(28,27,24,0.05); }
+  .step-content h4 { font-family: var(--font-body); font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--ink); text-align: center; }
+  .step-content ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .step-content li { font-size: var(--tiny); line-height: 1.5; color: var(--ink-secondary); padding-left: 14px; position: relative; }
+  .step-content li::before { content: "—"; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+  .data-point { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); font-size: var(--tiny); color: var(--accent-dark); font-weight: 600; text-align: center; }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>23 / 39 · 原则 2</div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="kicker" style="text-align: center; justify-content: center;">Workflow</div>
+      <h2 style="text-align: center;">从抓取到洞察的 <span class="accent">七步闭环</span></h2>
+      <p class="subtitle" style="text-align: center; margin: 0 auto;">每一步都可由 AI 辅助完成，PM 只需要把控输入定义和最终验证。</p>
+    </div>
+
+    <div class="timeline">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>定义关键词</h4>
+          <ul>
+            <li>产品词、场景词、竞品词</li>
+            <li>情绪词、问题词</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>API 抓取</h4>
+          <ul>
+            <li>Reddit 官方 API 或第三方存档（如 pullpush.io）</li>
+            <li>帖子 + 评论全文</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>清洗筛选</h4>
+          <ul>
+            <li>去广告、去 spam</li>
+            <li>相关度判断</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>AI 分析</h4>
+          <ul>
+            <li>主题分类、情感分析</li>
+            <li>痛点聚类、竞品提及</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>人工验证</h4>
+          <ul>
+            <li>抽样检查</li>
+            <li>关键 quote 复核</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h4>输出报告</h4>
+          <ul>
+            <li>结构化 Markdown</li>
+            <li>洞察 + 建议 + 不确定项</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">7</div>
+        <div class="step-content">
+          <h4>存档更新</h4>
+          <ul>
+            <li>历史趋势对比</li>
+            <li>设置定时任务</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">原则 2 · Reddit 情报抓取</div>
+    <div>AI 工具在硬件产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

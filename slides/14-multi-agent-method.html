@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>12 · 为什么需要多个 Agent</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .header { margin-bottom: 44px; }
+  .header h2 { font-size: 76px; margin-bottom: 16px; }
+  .header .subtitle { font-size: 28px; color: var(--ink-secondary); max-width: 960px; }
+
+  .blindspots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 40px; }
+  .blindspot { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 32px; box-shadow: 0 4px 20px rgba(28,27,24,0.05); }
+  .blindspot .icon { width: 56px; height: 56px; border-radius: 14px; background: var(--accent-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; font-size: 24px; }
+  .blindspot h4 { font-family: var(--font-body); font-size: 22px; margin-bottom: 10px; }
+  .blindspot p { font-size: var(--small); color: var(--ink-secondary); line-height: 1.6; }
+
+  .solution { background: var(--dark-block); color: #fff; border-radius: 16px; padding: 32px 40px; display: flex; align-items: center; gap: 28px; }
+  .solution-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; flex-shrink: 0; }
+  .solution h4 { font-family: var(--font-body); font-size: 24px; margin-bottom: 8px; color: #fff; }
+  .solution p { font-size: var(--small); color: rgba(255,255,255,0.75); line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>14 / 39 · 原则 3</div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="kicker">Why Multi-Agent</div>
+      <h2>为什么需要<span class="accent">多个 Agent</span>？</h2>
+      <p class="subtitle">单点输出容易「自说自话」。角色分离能强制 AI 从不同视角找证据、挑毛病。</p>
+    </div>
+
+    <div class="blindspots">
+      <div class="blindspot">
+        <div class="icon">1</div>
+        <h4>确认偏误</h4>
+        <p>一个 AI 倾向于顺着你的问题给出「看起来对」的答案，很少主动质疑前提。</p>
+      </div>
+      <div class="blindspot">
+        <div class="icon">2</div>
+        <h4>视角单一</h4>
+        <p>同一个 AI 同时扮演用户、技术、商业、竞品，容易互相干扰，哪边都谈不透。</p>
+      </div>
+      <div class="blindspot">
+        <div class="icon">3</div>
+        <h4>幻觉更隐蔽</h4>
+        <p>当 AI 自己生成结论又自己验证时，错误很难被发现。需要外部角色来交叉检查。</p>
+      </div>
+    </div>
+
+    <div class="solution">
+      <div class="solution-icon">✓</div>
+      <div>
+        <h4>解法：让不同角色分别输出，再互相挑战</h4>
+        <p>用户视角、技术可行性、商业价值、竞品市场四个 Agent 各执一词，最后由人整合判断。一个 Agent 的盲区，往往能被另一个发现。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">原则 3 · 为什么需要多 Agent</div>
+    <div>AI 工具在产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>31 · 消息渠道打通</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: center; }
+  .left h2 { font-size: 72px; margin-bottom: 28px; }
+  .left .body-large { max-width: 620px; margin-bottom: 36px; }
+  .channel { display: flex; align-items: center; gap: 16px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; margin-bottom: 14px; box-shadow: 0 4px 16px rgba(28,27,24,0.04); }
+  .channel .icon { width: 44px; height: 44px; border-radius: 10px; background: var(--accent-pale); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--accent-dark); }
+  .channel .name { font-family: var(--font-body); font-size: 20px; font-weight: 600; }
+  .channel .desc { font-size: var(--tiny); color: var(--ink-muted); }
+  .right { background: var(--paper-warm); border: 1px solid var(--line); border-radius: 20px; padding: 40px; }
+  .chat-window { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 8px 32px rgba(28,27,24,0.08); }
+  .chat-item { margin-bottom: 18px; }
+  .chat-item:last-child { margin-bottom: 0; }
+  .chat-item .role { font-size: 12px; font-weight: 600; color: var(--ink-muted); margin-bottom: 6px; }
+  .chat-item .bubble { border-radius: 12px; padding: 14px 18px; font-size: var(--small); line-height: 1.55; }
+  .chat-item.user .bubble { background: var(--dark-block); color: #fff; }
+  .chat-item.ai .bubble { background: var(--paper-warm); color: var(--ink-secondary); }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>33 / 39 · 原则 4</div>
+  </div>
+
+  <div class="main">
+    <div class="left">
+      <div class="kicker">Message Channels</div>
+      <h2>消息渠道打通：<span class="accent">随时指挥 AI</span></h2>
+      <p class="body-large">AI 不必只在网页里用。把它接到你每天工作的聊天工具里，随时随地触发任务、查看结果、继续追问。</p>
+
+      <div class="channel">
+        <div class="icon">01</div>
+        <div>
+          <div class="name">飞书 / 钉钉</div>
+          <div class="desc">企业办公场景，适合团队协作和周报推送</div>
+        </div>
+      </div>
+      <div class="channel">
+        <div class="icon">02</div>
+        <div>
+          <div class="name">微信</div>
+          <div class="desc">个人助理场景，适合提醒和快速查询</div>
+        </div>
+      </div>
+      <div class="channel">
+        <div class="icon">03</div>
+        <div>
+          <div class="name">WhatsApp / Telegram</div>
+          <div class="desc">海外团队协作场景</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="chat-window">
+        <div class="chat-item user">
+          <div class="role">你 @ AI 助手</div>
+          <div class="bubble">"帮我跑一下本周 Reddit 情报报告"</div>
+        </div>
+        <div class="chat-item ai">
+          <div class="role">AI 助手</div>
+          <div class="bubble">"已开始执行 reddit-intelligence-analysis，预计 5 分钟内完成。完成后会推送报告到这里。"</div>
+        </div>
+        <div class="chat-item user">
+          <div class="role">你</div>
+          <div class="bubble">"关于价格敏感度的具体 quote 有哪些？"</div>
+        </div>
+        <div class="chat-item ai">
+          <div class="role">AI 助手</div>
+          <div class="bubble">"本周共找到 23 条价格相关讨论，Top 3 原声如下……"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">原则 4 · 消息渠道</div>
+    <div>AI 工具在硬件产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

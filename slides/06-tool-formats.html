@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>05 · AI 工具的三种入口形态</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .header { margin-bottom: 44px; }
+  .header h2 { font-size: 76px; margin-bottom: 16px; }
+  .header .subtitle { font-size: 28px; color: var(--ink-secondary); max-width: 960px; }
+  .formats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 40px; }
+  .format { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 32px; box-shadow: 0 6px 24px rgba(28,27,24,0.06); display: flex; flex-direction: column; }
+  .format .icon { width: 56px; height: 56px; border-radius: 12px; background: var(--accent-pale); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--accent-dark); margin-bottom: 20px; }
+  .format h4 { font-family: var(--font-body); font-size: 24px; margin-bottom: 10px; }
+  .format .examples { font-size: var(--small); color: var(--ink-secondary); margin-bottom: 16px; }
+  .format .pros { font-size: var(--tiny); color: var(--ink-secondary); line-height: 1.6; }
+  .format .pros strong { color: var(--accent-dark); }
+  .format .pros li { margin-bottom: 6px; }
+  .takeaway { background: var(--dark-block); color: #fff; border-radius: 16px; padding: 28px 36px; display: flex; gap: 20px; align-items: flex-start; }
+  .takeaway-icon { width: 48px; height: 48px; border-radius: 10px; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 22px; font-weight: 700; flex-shrink: 0; }
+  .takeaway h4 { font-family: var(--font-body); font-size: 22px; margin-bottom: 8px; }
+  .takeaway p { font-size: var(--small); color: rgba(255,255,255,0.85); line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>6 / 39 · 开场</div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="kicker">Tool Formats</div>
+      <h2>AI 工具的<span class="accent">三种入口形态</span></h2>
+      <p class="subtitle">选工具时，先看「入口形态」是否匹配你的工作流，而不是只看模型能力。</p>
+    </div>
+
+    <div class="formats">
+      <div class="format">
+        <div class="icon">⏹</div>
+        <h4>终端窗口</h4>
+        <p class="examples">Claude Code、OpenAI Codex、Hermes CLI</p>
+        <ul class="pros">
+          <li><strong>最适合：</strong>工程师、高频代码协作</li>
+          <li><strong>优势：</strong>与项目代码库深度融合、快捷键驱动</li>
+          <li><strong>门槛：</strong>需要命令行习惯，PM 可旁观但不易上手</li>
+        </ul>
+      </div>
+
+      <div class="format">
+        <div class="icon">▣</div>
+        <h4>桌面客户端</h4>
+        <p class="examples">ChatGPT、Claude、Gemini、Hermes Desktop</p>
+        <ul class="pros">
+          <li><strong>最适合：</strong>产品经理、日常文档、分析、沟通</li>
+          <li><strong>优势：</strong>开箱即用、跨应用粘贴、支持语音/图片</li>
+          <li><strong>局限：</strong>通常是单次对话，难以自动化</li>
+        </ul>
+      </div>
+
+      <div class="format">
+        <div class="icon">☁</div>
+        <h4>云端服务器 + WebUI</h4>
+        <p class="examples">Ollama + Open WebUI、vLLM、Dify、本地 LLM 面板</p>
+        <ul class="pros">
+          <li><strong>最适合：</strong>团队、数据安全、定制化工作流</li>
+          <li><strong>优势：</strong>私有数据不出域、可接内部系统、可多人协作</li>
+          <li><strong>门槛：</strong>需要部署和维护成本</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="takeaway">
+      <div class="takeaway-icon">→</div>
+      <div>
+        <h4>对产品经理的启示</h4>
+        <p>不要被「哪个模型更强」带偏。大多数 PM 的工作场景，桌面客户端或云端自搭 WebUI 已经够用；只有当你需要把 AI 接入持续工作流（定时、多渠道、自动化）时，才需要考虑更底层的 Agent 系统。今天的案例会以 Hermes 桌面端做演示，但方法论适用于任何入口形态。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">开场 · AI 工具的入口形态</div>
+    <div>AI 工具在产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>36 · 本周可开始的 3 件事</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+  .header { margin-bottom: 56px; }
+  .header h2 { font-size: 80px; margin-bottom: 20px; }
+  .header .subtitle { font-size: 28px; color: var(--ink-secondary); max-width: 800px; margin: 0 auto; }
+  .actions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1400px; width: 100%; }
+  .action-card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 44px 32px; box-shadow: 0 8px 32px rgba(28,27,24,0.08); display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .action-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(28,27,24,0.12); transition: transform .2s, box-shadow .2s; }
+  .action-number { width: 64px; height: 64px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-en); font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 24px; }
+  .action-card h4 { font-family: var(--font-body); font-size: 28px; margin-bottom: 14px; color: var(--ink); }
+  .action-card p { font-size: var(--small); line-height: 1.6; color: var(--ink-secondary); }
+  .action-meta { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); font-size: var(--tiny); color: var(--ink-muted); width: 100%; }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>38 / 39 · 收尾</div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="kicker">Action Items</div>
+      <h2>本周就可以<span class="accent">开始</span>的 3 件事</h2>
+      <p class="subtitle">不需要等待完美方案，从最小的一步开始，让 AI 进入你的工作流。</p>
+    </div>
+
+    <div class="actions-grid">
+      <div class="action-card">
+        <div class="action-number">1</div>
+        <h4>跑一次多 Agent 分析</h4>
+        <p>选一个真实 PRD 前的需求，用 4 个角色 Agent 模板跑一次，记录交叉校验结果。</p>
+        <div class="action-meta">预计 30 分钟</div>
+      </div>
+      <div class="action-card">
+        <div class="action-number">2</div>
+        <h4>封装一个 Skill</h4>
+        <p>把一个每周重复做的工作写成 SKILL.md 框架，先在本地跑通一次。</p>
+        <div class="action-meta">先完成框架，再迭代</div>
+      </div>
+      <div class="action-card">
+        <div class="action-number">3</div>
+        <h4>建立验证习惯</h4>
+        <p>对 AI 输出的关键结论，至少抽查一个数据来源或逻辑链条，培养"信任但验证"的习惯。</p>
+        <div class="action-meta">每次分析后做</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">收尾 · 行动清单</div>
+    <div>AI 工具在硬件产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>

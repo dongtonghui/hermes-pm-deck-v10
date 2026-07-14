@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>14 · 用户视角分析</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: center; }
+  .left h2 { font-size: 72px; margin-bottom: 24px; }
+  .left .subtitle { font-size: 28px; color: var(--ink-secondary); margin-bottom: 36px; }
+  .insight-card { background: var(--dark-block); color: #fff; border-radius: 16px; padding: 32px; }
+  .insight-card h4 { font-family: var(--font-body); font-size: 22px; margin-bottom: 12px; color: var(--accent-light); }
+  .insight-card p { font-size: var(--small); line-height: 1.65; color: rgba(255,255,255,0.85); }
+
+  .right { display: flex; flex-direction: column; gap: 20px; }
+  .evidence { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 26px; }
+  .evidence h4 { font-family: var(--font-body); font-size: 20px; margin-bottom: 10px; color: var(--accent-dark); }
+  .evidence p { font-size: var(--small); color: var(--ink-secondary); line-height: 1.6; }
+  .evidence .quote { font-family: var(--font-display); font-size: 22px; color: var(--ink); line-height: 1.5; margin-bottom: 10px; }
+  .evidence .source { font-size: var(--tiny); color: var(--ink-muted); }
+
+  .verdict { background: var(--accent-pale); border: 1px solid var(--accent-light); border-radius: 14px; padding: 24px 28px; display: flex; gap: 18px; align-items: flex-start; }
+  .verdict-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; font-weight: 700; flex-shrink: 0; }
+  .verdict h4 { font-family: var(--font-body); font-size: 22px; margin-bottom: 6px; color: var(--accent-dark); }
+  .verdict p { font-size: var(--small); color: var(--ink-secondary); line-height: 1.55; }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead"><div class="brand">AI 工具深度应用</div><div>16 / 39 · 原则 3</div></div>
+
+  <div class="main">
+    <div class="left">
+      <div class="kicker">User Lens</div>
+      <h2>用户视角：<span class="accent">他们真正在意什么</span>？</h2>
+      <p class="subtitle">不要问 AI「用户会喜欢氛围灯吗」，而是让 AI 读真实用户讨论，看看用户自己把字数花在了哪里。</p>
+      <div class="insight-card">
+        <h4>核心发现</h4>
+        <p>基于 Reddit 13 个相关社区样本（演示数据，非正式统计研究）的初步扫描：明确提到「氛围灯 / ambient light / RGB / decorative light」的内容占比极低，用户讨论集中在发芽、生长、光照参数、空间和灌溉上，外观/装饰/氛围占比仅约 7%，优先级最低。</p>
+        <p style="margin-top:12px; font-size:13px; color:rgba(255,255,255,0.55);">注：数据来自 pullpush.io 等第三方 Reddit 存档的示例抓取，仅用于演示多 Agent 分析方法，不构成市场研究结论。</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="evidence">
+        <h4>用户讨论主题分布（基于社区真实声音样本）</h4>
+        <p>发芽/生长 33% · 空间/拥挤 21% · 光照/灯光 18% · 灌溉/水位 18%</p>
+        <p style="margin-top: 8px;"><strong>外观/装饰/氛围仅占约 7%，优先级最低。</strong></p>
+      </div>
+      <div class="evidence">
+        <h4>真实痛点：光污染，而不是缺少氛围灯</h4>
+        <div class="quote">"I was struggling with the grow light being WAY too bright at night... even from the bedroom, the illumination of this thing was visible out the window."</div>
+        <div class="source">— r/aerogarden 用户因灯太亮，自己找 enclosure 遮挡</div>
+      </div>
+      <div class="evidence">
+        <h4>使用场景推断</h4>
+        <p>植物灯常放在阳台、地下室、柜子里，不是客厅展示位。用户诉求是「让灯不要干扰家居环境」，而非「让灯成为氛围光源」。</p>
+      </div>
+
+      <div class="verdict">
+        <div class="verdict-icon">→</div>
+        <div>
+          <h4>用户视角结论</h4>
+          <p>氛围灯没有直接需求证据。用户真实痛点是光污染——灯太亮影响生活。更优解是调光、定时、遮光/柔光设计，而不是增加 RGB 氛围灯。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><div class="section-tag">原则 3 · 用户视角</div><div>AI 工具在产品工作中的深度应用</div></div>
+</div>
+</body>
+</html>

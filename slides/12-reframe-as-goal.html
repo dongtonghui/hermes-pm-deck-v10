@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>10 · 把问题重新框定成目标</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide-content { display: flex; flex-direction: column; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .header { margin-bottom: 36px; }
+  .header h2 { font-size: 76px; margin-bottom: 16px; }
+  .header .subtitle { font-size: 28px; color: var(--ink-secondary); max-width: 960px; }
+
+  .reframe { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-bottom: 36px; }
+  .reframe-card { border-radius: 18px; padding: 36px; }
+  .reframe-card.before { background: var(--paper-warm); border: 1px solid var(--line); }
+  .reframe-card.after { background: var(--dark-block); color: #fff; }
+  .reframe-card .tag { font-family: var(--font-en); font-size: var(--tiny); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .reframe-card.before .tag { color: var(--ink-muted); }
+  .reframe-card.after .tag { color: var(--accent-light); }
+  .reframe-card h4 { font-size: 32px; margin-bottom: 16px; }
+  .reframe-card p { font-size: var(--small); line-height: 1.65; }
+  .reframe-card.before p { color: var(--ink-secondary); }
+  .reframe-card.after p { color: rgba(255,255,255,0.75); }
+
+  .assumptions { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 32px; }
+  .assumptions h4 { font-family: var(--font-body); font-size: 24px; margin-bottom: 18px; color: var(--accent-dark); }
+  .assumption-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .assumption-item { background: var(--paper-warm); border-radius: 12px; padding: 22px; }
+  .assumption-item .num { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+  .assumption-item p { font-size: var(--small); color: var(--ink-secondary); line-height: 1.55; }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead"><div class="brand">AI 工具深度应用</div><div>12 / 39 · 原则 1</div></div>
+
+  <div class="main">
+    <div class="header">
+      <div class="kicker">Reframe the Question</div>
+      <h2>把问题重新框定成<span class="accent">目标</span></h2>
+      <p class="subtitle">不是「帮我写需求分析」，而是「判断氛围灯是否值得做」。</p>
+    </div>
+
+    <div class="reframe">
+      <div class="reframe-card before">
+        <div class="tag">Before · 任务导向</div>
+        <h4>"写一个带氛围灯功能的植物灯 PRD"</h4>
+        <p>AI 会默认氛围灯是既定需求，忙着补功能细节、画流程、写验收标准。结果产出的 PRD 看起来很完整，但核心假设从未被质疑。</p>
+      </div>
+      <div class="reframe-card after">
+        <div class="tag">After · 目标导向</div>
+        <h4>"判断氛围灯是否值得做"</h4>
+        <p>AI 会先帮你列出需要验证的假设：用户需要吗？愿意付费吗？技术复杂吗？竞品有吗？你拿到的是一个可讨论的决策基础，而不是一份默认成立的文档。</p>
+      </div>
+    </div>
+
+    <div class="assumptions">
+      <h4>需要验证的 3 个关键假设</h4>
+      <div class="assumption-list">
+        <div class="assumption-item">
+          <div class="num">01</div>
+          <p>目标用户真的会在种植场景中用到氛围灯吗？</p>
+        </div>
+        <div class="assumption-item">
+          <div class="num">02</div>
+          <p>氛围灯是否会影响购买决策或支撑溢价？</p>
+        </div>
+        <div class="assumption-item">
+          <div class="num">03</div>
+          <p>增加氛围灯带来的成本、复杂度是否在可接受范围？</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><div class="section-tag">原则 1 · 重新框定</div><div>AI 工具在产品工作中的深度应用</div></div>
+</div>
+</body>
+</html>
