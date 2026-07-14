@@ -19,6 +19,32 @@
   .format .pros { font-size: var(--tiny); color: var(--ink-secondary); line-height: 1.6; }
   .format .pros strong { color: var(--accent-dark); }
   .format .pros li { margin-bottom: 6px; }
+  .mockup { height: 160px; border-radius: 10px; border: 1px solid var(--line); margin-bottom: 20px; overflow: hidden; position: relative; background: #faf9f6; }
+  /* Terminal mockup */
+  .mockup-terminal { background: #1a1d23; color: #d1d5db; font-family: "SF Mono", "JetBrains Mono", monospace; font-size: 11px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+  .mockup-terminal .line { display: flex; gap: 8px; }
+  .mockup-terminal .prompt { color: #34d399; }
+  .mockup-terminal .cursor { width: 6px; height: 13px; background: #34d399; animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  /* Desktop app mockup */
+  .mockup-desktop { display: flex; background: #fff; }
+  .mockup-desktop .sidebar { width: 28%; background: #f5f3ed; border-right: 1px solid var(--line); padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+  .mockup-desktop .sidebar-item { height: 14px; background: #e8e4d9; border-radius: 4px; }
+  .mockup-desktop .chat { flex: 1; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+  .mockup-desktop .bubble { max-width: 75%; padding: 8px 12px; border-radius: 12px; font-size: 10px; line-height: 1.4; }
+  .mockup-desktop .bubble-user { background: var(--accent); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+  .mockup-desktop .bubble-ai { background: #f0eee6; color: var(--ink); align-self: flex-start; border-bottom-left-radius: 4px; }
+  .mockup-desktop .input { margin-top: auto; height: 22px; background: #f5f3ed; border-radius: 6px; }
+  /* WebUI mockup */
+  .mockup-webui { background: #fff; display: flex; flex-direction: column; }
+  .mockup-webui .browser-bar { height: 28px; background: #f5f3ed; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 8px; padding: 0 12px; }
+  .mockup-webui .dot { width: 7px; height: 7px; border-radius: 50%; background: #d4d0c5; }
+  .mockup-webui .address { flex: 1; height: 16px; background: #fff; border: 1px solid #e8e4d9; border-radius: 4px; }
+  .mockup-webui .body { flex: 1; display: flex; padding: 12px; gap: 12px; }
+  .mockup-webui .panel { width: 30%; background: #faf9f6; border: 1px solid var(--line); border-radius: 6px; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+  .mockup-webui .panel-row { height: 10px; background: #e8e4d9; border-radius: 3px; }
+  .mockup-webui .main-area { flex: 1; background: #faf9f6; border: 1px solid var(--line); border-radius: 6px; padding: 8px; display: flex; flex-direction: column; gap: 8px; }
+  .mockup-webui .msg { max-width: 80%; padding: 6px 10px; border-radius: 8px; font-size: 9px; background: #f0eee6; }
   .takeaway { background: var(--dark-block); color: #fff; border-radius: 16px; padding: 28px 36px; display: flex; gap: 20px; align-items: flex-start; }
   .takeaway-icon { width: 48px; height: 48px; border-radius: 10px; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 22px; font-weight: 700; flex-shrink: 0; }
   .takeaway h4 { font-family: var(--font-body); font-size: 22px; margin-bottom: 8px; }
@@ -42,6 +68,13 @@
     <div class="formats">
       <div class="format">
         <div class="icon">⏹</div>
+        <div class="mockup mockup-terminal">
+          <div class="line"><span class="prompt">$</span><span>claude</span></div>
+          <div class="line"><span class="prompt">$</span><span>explain app.js</span><span class="cursor"></span></div>
+          <div class="line"># 1. Reads app.js ...</div>
+          <div class="line"># 2. Analyzes imports ...</div>
+          <div class="line" style="color:#6b7280;">~ project-root</div>
+        </div>
         <h4>终端窗口</h4>
         <p class="examples">Claude Code、OpenAI Codex、Hermes CLI</p>
         <ul class="pros">
@@ -53,6 +86,18 @@
 
       <div class="format">
         <div class="icon">▣</div>
+        <div class="mockup mockup-desktop">
+          <div class="sidebar">
+            <div class="sidebar-item" style="width:70%"></div>
+            <div class="sidebar-item" style="width:55%"></div>
+            <div class="sidebar-item" style="width:80%"></div>
+          </div>
+          <div class="chat">
+            <div class="bubble bubble-user">帮我分析这份需求</div>
+            <div class="bubble bubble-ai">从用户视角看，核心痛点是...</div>
+            <div class="input"></div>
+          </div>
+        </div>
         <h4>桌面客户端</h4>
         <p class="examples">ChatGPT、Claude、Gemini、Hermes Desktop</p>
         <ul class="pros">
@@ -64,6 +109,20 @@
 
       <div class="format">
         <div class="icon">☁</div>
+        <div class="mockup mockup-webui">
+          <div class="browser-bar"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="address"></div></div>
+          <div class="body">
+            <div class="panel">
+              <div class="panel-row" style="width:60%"></div>
+              <div class="panel-row" style="width:80%"></div>
+              <div class="panel-row" style="width:50%"></div>
+            </div>
+            <div class="main-area">
+              <div class="msg">模型：Llama 3 · 私有部署</div>
+              <div class="msg">查询内部知识库...</div>
+            </div>
+          </div>
+        </div>
         <h4>云端服务器 + WebUI</h4>
         <p class="examples">Ollama + Open WebUI、vLLM、Dify、本地 LLM 面板</p>
         <ul class="pros">
