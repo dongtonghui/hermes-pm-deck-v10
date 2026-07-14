@@ -2,61 +2,64 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>07 · Hermes 迭代记录</title>
+<title>09 · 最近 1 年 AI 工具演进</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared/tokens.css">
 <style>
   body { background: var(--tech-bg); color: #fff; }
   .slide-content { display: flex; flex-direction: column; }
   .main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-  .header { margin-bottom: 44px; }
-  .header h2 { color: #fff; font-size: 76px; margin-bottom: 16px; }
+  .header { margin-bottom: 36px; }
+  .header h2 { color: #fff; font-size: 70px; margin-bottom: 16px; }
   .header h2 .accent { color: var(--accent-light); }
-  .header .subtitle { color: rgba(255,255,255,0.72); font-size: 28px; max-width: 1000px; }
+  .header .subtitle { color: rgba(255,255,255,0.72); font-size: 27px; max-width: 1100px; }
 
-  .timeline { position: relative; padding-left: 36px; }
+  .timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; position: relative; }
   .timeline::before {
     content: "";
     position: absolute;
-    left: 10px;
-    top: 8px;
-    bottom: 8px;
-    width: 3px;
-    background: linear-gradient(180deg, var(--accent-light), var(--accent-dark));
+    top: 18px;
+    left: 5%;
+    right: 5%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-light), var(--accent-dark));
     border-radius: 3px;
   }
-  .release { position: relative; margin-bottom: 28px; padding-left: 36px; }
-  .release:last-child { margin-bottom: 0; }
-  .release::before {
+  .phase { position: relative; z-index: 1; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10); border-radius: 16px; padding: 28px; }
+  .phase::before {
     content: "";
     position: absolute;
-    left: -30px;
-    top: 6px;
+    left: 50%;
+    top: -28px;
+    transform: translateX(-50%);
     width: 18px;
     height: 18px;
     background: var(--accent);
     border-radius: 50%;
     box-shadow: 0 0 0 6px rgba(196,92,38,0.2);
   }
-  .release .version { font-family: var(--font-display); font-size: 32px; font-weight: 900; color: var(--accent-light); margin-bottom: 4px; }
-  .release .date { font-size: var(--tiny); color: rgba(255,255,255,0.5); margin-bottom: 10px; letter-spacing: 0.05em; }
-  .release .theme { font-family: var(--font-body); font-size: 24px; color: #fff; margin-bottom: 10px; }
-  .release .changes { display: flex; flex-wrap: wrap; gap: 10px; }
-  .release .changes span { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 8px 14px; font-size: var(--tiny); color: rgba(255,255,255,0.8); }
+  .phase .date { font-size: var(--tiny); color: rgba(255,255,255,0.5); margin-bottom: 10px; letter-spacing: 0.05em; text-align: center; }
+  .phase .version { font-family: var(--font-display); font-size: 28px; font-weight: 900; color: var(--accent-light); margin-bottom: 8px; text-align: center; }
+  .phase .theme { font-family: var(--font-body); font-size: 21px; color: #fff; margin-bottom: 16px; text-align: center; }
+  .phase .changes { display: flex; flex-direction: column; gap: 8px; }
+  .phase .changes span { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 8px 12px; font-size: var(--tiny); color: rgba(255,255,255,0.85); line-height: 1.45; }
+  .phase .changes span strong { color: var(--accent-light); font-weight: 600; }
 
-  .insight {
-    margin-top: 44px;
+  .hermes-row {
+    margin-top: 32px;
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 16px;
-    padding: 26px 32px;
+    padding: 24px 32px;
     display: flex;
     gap: 20px;
     align-items: flex-start;
   }
-  .insight-icon { width: 48px; height: 48px; border-radius: 10px; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 22px; font-weight: 700; flex-shrink: 0; }
-  .insight h4 { font-family: var(--font-body); font-size: 22px; color: #fff; margin-bottom: 8px; }
-  .insight p { font-size: var(--small); color: rgba(255,255,255,0.7); line-height: 1.6; }
+  .hermes-row .icon { width: 48px; height: 48px; border-radius: 10px; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 22px; font-weight: 700; flex-shrink: 0; }
+  .hermes-row h4 { font-family: var(--font-body); font-size: 22px; color: #fff; margin-bottom: 8px; }
+  .hermes-row p { font-size: var(--small); color: rgba(255,255,255,0.7); line-height: 1.6; }
+  .hermes-row .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .hermes-row .tags span { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 5px 10px; font-size: 12px; color: rgba(255,255,255,0.8); }
 
   .grid-bg {
     position: absolute;
@@ -88,64 +91,65 @@
 
   <div class="main">
     <div class="header">
-      <div class="kicker" style="color: var(--accent-light);">Release Trajectory</div>
-      <h2>从 Hermes 迭代看 <span class="accent">AI Agent 行业方向</span></h2>
-      <p class="subtitle">观察一个 Agent 产品的迭代节奏，能帮你判断行业正在从「对话工具」走向「长期自动化系统」。</p>
+      <div class="kicker" style="color: var(--accent-light);">1-Year Trajectory</div>
+      <h2>最近 1 年 AI 工具 <span class="accent">演进脉络</span></h2>
+      <p class="subtitle">模型能力、工程封装、入口形态三条线并行，整个行业都在回答同一个问题：怎么让 AI 从「用完即走」变成「长期协作」。</p>
     </div>
 
     <div class="timeline">
-      <div class="release">
-        <div class="version">阶段一 · Velocity</div>
-        <div class="date">2026 年上半年 · 行业趋势示例</div>
-        <div class="theme">速度 + 编排：把庞杂代码重构为模块化 Agent，引入看板式多 Agent 协作</div>
+      <div class="phase">
+        <div class="date">2025 下半年</div>
+        <div class="version">模型能力跃迁</div>
+        <div class="theme">多模态、长上下文、推理能力增强，为 Agent 时代奠定模型基础</div>
         <div class="changes">
-          <span>代码模块化重构</span>
-          <span>看板式多 Agent 编排</span>
-          <span>Skill 组合封装</span>
-          <span>多模型 provider 接入</span>
-          <span>密钥管理</span>
+          <span><strong>代表：</strong>GPT-4o、Claude 3.5、Gemini 1.5 等</span>
+          <span>长上下文让 Agent 能读完整项目/文档</span>
+          <span>多模态让 AI 能看截图、听语音、读图表</span>
         </div>
       </div>
 
-      <div class="release">
-        <div class="version">阶段二 · Desktop</div>
-        <div class="date">2026 年中 · 行业趋势示例</div>
-        <div class="theme">桌面化 + 普惠：发布桌面客户端，补齐中文与多 provider，降低非开发者门槛</div>
+      <div class="phase">
+        <div class="date">2025 年底</div>
+        <div class="version">Agent 觉醒</div>
+        <div class="theme">行业意识到「模型只是基础，Agent 才是下一步」</div>
         <div class="changes">
-          <span>桌面 App 发布</span>
-          <span>简体中文完整支持</span>
-          <span>本地 / 云端模型接入</span>
-          <span>消息平台插件</span>
-          <span>冷启动优化</span>
+          <span><strong>代表：</strong>Claude Code、OpenAI Codex、Anthropic Computer Use</span>
+          <span>MCP 规范发布，工具调用开始标准化</span>
+          <span>AI 第一次能真正「操作电脑」和「调用工具」</span>
         </div>
       </div>
 
-      <div class="release">
-        <div class="version">阶段三 · Reach</div>
-        <div class="date">2026 年下半年 · 行业趋势示例</div>
-        <div class="theme">触达 + 异步：打通即时消息，支持后台子 Agent，让自动化真正离开电脑</div>
+      <div class="phase">
+        <div class="date">2026 上半年</div>
+        <div class="version">工程化与普惠化</div>
+        <div class="theme">Agent 开始可封装、可编排、可长期在线运行</div>
         <div class="changes">
-          <span>即时消息 / WhatsApp / iMessage 等接入</span>
-          <span>后台异步子 Agent</span>
-          <span>图片编辑能力</span>
-          <span>语音对话</span>
-          <span>Skills 市场 / Hub 重构</span>
+          <span><strong>Skills / MCP</strong> 成为可复用标准</span>
+          <span><strong>MOA</strong>、Kanban、Subagents 让多 Agent 协作落地</span>
+          <span>桌面客户端、消息渠道、定时任务让 AI 融入日常工作流</span>
         </div>
       </div>
     </div>
 
-    <div class="insight">
-      <div class="insight-icon">→</div>
+    <div class="hermes-row">
+      <div class="icon">H</div>
       <div>
-        <h4>对产品经理的启示</h4>
-        <p>这类 Agent 产品的迭代路径不是堆模型能力，而是让 Agent 从「一次对话」变成「长期在线、可调度、可触达」的系统。这正是我们接下来要讲的：给目标、多 Agent、喂数据、封装自动化。</p>
-        <p style="margin-top:10px; font-size:13px; color:rgba(255,255,255,0.55);">注：以上时间线与功能点基于 Hermes 截至 2026 年 7 月的公开 Release Notes，仅作为行业趋势示例，具体版本号以官方发布为准。</p>
+        <h4>Hermes 是这个演进的一个缩影</h4>
+        <p>它的迭代路径不是堆模型能力，而是把上述趋势产品化：用 <strong>/goal</strong> 把对话转成目标契约，用 <strong>/learn</strong> 和 <strong>/journey</strong> 形成自我改进闭环，用 <strong>MOA（Mixture-of-Agents）</strong> 让多个模型互相校验，再用 Skills、MCP、记忆和消息渠道把这些能力封装成可长期运行的系统。</p>
+        <div class="tags">
+          <span>/goal 目标契约</span>
+          <span>/learn 学习闭环</span>
+          <span>MOA 多模型混合</span>
+          <span>Skills 封装</span>
+          <span>MCP 工具标准</span>
+          <span>跨会话记忆</span>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="page-footer">
-    <div class="section-tag">工具选择 · Hermes 迭代记录</div>
+    <div class="section-tag">工具选择 · 最近 1 年 AI 工具演进</div>
     <div>AI 工具在产品工作中的深度应用</div>
   </div>
 </div>
