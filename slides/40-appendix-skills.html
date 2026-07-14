@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>40 · 附录：工作坊技能</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  :root { --accent: #C45C26; --accent-light: #E89B6C; --accent-dark: #8C3A18; }
+  .slide-content { display: flex; flex-direction: column; background: var(--paper-bg); color: #2A2220; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 60px; }
+  .header { margin-bottom: 40px; }
+  .header .kicker { color: var(--accent-dark); font-size: 16px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .header h2 { font-family: var(--font-display); font-size: 64px; font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
+  .header h2 .accent { color: var(--accent); }
+  .header .subtitle { font-size: var(--body); color: var(--ink-secondary); max-width: 900px; line-height: 1.6; }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+  .card { background: #fff; border: 1px solid var(--rule); border-radius: 20px; padding: 32px; box-shadow: 0 12px 40px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+  .card .card-head { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+  .card .icon { width: 56px; height: 56px; border-radius: 14px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; }
+  .card h4 { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: #2A2220; }
+  .card .tagline { font-size: var(--small); color: var(--ink-secondary); margin-bottom: 16px; line-height: 1.5; }
+  .card .section-title { font-size: 14px; font-weight: 600; color: var(--accent-dark); margin: 16px 0 8px; letter-spacing: 0.05em; }
+  .card .workflow { list-style: none; padding: 0; margin: 0; }
+  .card .workflow li { font-size: var(--tiny); color: var(--ink-secondary); padding: 8px 0; border-bottom: 1px solid var(--rule); display: flex; gap: 10px; }
+  .card .workflow li:last-child { border-bottom: none; }
+  .card .workflow li span { color: var(--accent); font-weight: 700; flex-shrink: 0; }
+  .card .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: auto; padding: 12px 20px; border-radius: 10px; background: var(--accent); color: #fff; text-decoration: none; font-size: 15px; font-weight: 600; transition: transform .2s, background .2s; }
+  .card .btn:hover { background: var(--accent-dark); transform: translateY(-2px); }
+  .card .btn.secondary { background: transparent; color: var(--accent-dark); border: 2px solid var(--accent); }
+  .card .btn.secondary:hover { background: rgba(196,92,38,0.05); }
+  .card .install-note { font-size: 12px; color: var(--ink-tertiary); margin-top: 12px; line-height: 1.5; }
+
+  .footer-note { margin-top: 32px; padding: 18px 24px; background: rgba(196,92,38,0.06); border-left: 4px solid var(--accent); border-radius: 10px; font-size: var(--small); color: var(--ink-secondary); line-height: 1.6; }
+  .footer-note strong { color: var(--accent-dark); }
+</style>
+</head>
+<body>
+<div class="slide-content">
+  <div class="page-masthead">
+    <div class="brand">AI 工具深度应用</div>
+    <div>40 / 40 · 附录</div>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="kicker">Workshop Appendix</div>
+      <h2>附录 A · 本次工作坊会用到的 <span class="accent">Hermes 技能</span></h2>
+      <p class="subtitle">下面两个技能都已在主讲人的 Hermes 中安装。它们代表了「把 AI 从聊天框变成工作流」的两条路径：一个负责快速产出高保真视觉，一个负责把社区声音变成可分析的数据。</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-head">
+          <div class="icon">H</div>
+          <h4>huashu-design</h4>
+        </div>
+        <div class="tagline">花叔 Design：用 HTML 做高保真原型、交互 Demo、幻灯片和动画。</div>
+        <div class="section-title">工作流程原理</div>
+        <ul class="workflow">
+          <li><span>1</span> 先澄清目标：受众、尺寸、情感基调、输出格式</li>
+          <li><span>2</span> 收集真实资产：品牌色、logo、产品图、字体</li>
+          <li><span>3</span> 多方向探索：并行产出 3 套差异化视觉方案</li>
+          <li><span>4</span> 用 HTML/CSS 交付可点击、可演示、可导出 MP4/GIF 的成品</li>
+        </ul>
+        <div class="section-title">适用场景</div>
+        <div class="tagline">产品 mockup、PPT 幻灯片、交互动画、设计变体评审。</div>
+        <a class="btn" href="https://github.com/alchaincyf/huashu-design" target="_blank">下载与安装</a>
+        <div class="install-note">安装：将仓库 clone 到 ~/.hermes/skills/creative/huashu-design/</div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="icon">R</div>
+          <h4>reddit-community-research</h4>
+        </div>
+        <div class="tagline">系统性爬取 Reddit 社区数据，提取痛点、情绪信号与功能需求优先级。</div>
+        <div class="section-title">工作流程原理</div>
+        <ul class="workflow">
+          <li><span>1</span> 确认目标：subreddit、关键词、时间范围、数据量</li>
+          <li><span>2</span> 用 pullpush.io 或 Tavily 获取帖子与评论数据</li>
+          <li><span>3</span> 结构化：过滤噪音、分类痛点、提取情绪关键词</li>
+          <li><span>4</span> 输出报告：痛点矩阵、需求优先级、可直接引用的高保真原声</li>
+        </ul>
+        <div class="section-title">适用场景</div>
+        <div class="tagline">竞品社区调研、用户需求验证、社交媒体聆听、Reddit 情报。</div>
+        <a class="btn secondary" href="https://github.com/hermes-skills/reddit-community-research" target="_blank">查看安装源</a>
+        <div class="install-note">该技能为社区/私有分发。若公开链接不可访问，请在 Hermes 中运行 `hermes skills search reddit` 或通过工作坊渠道获取。</div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <strong>如何安装 Hermes 技能：</strong> 将 skill 仓库 clone 到 ~/.hermes/skills/&lt;category&gt;/&lt;skill-name&gt;/ 目录下，或直接通过 Hermes 内置 skill 管理命令安装。安装后重启 Hermes 或运行 <code>hermes skills list</code> 即可看到新技能。
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="section-tag">附录 · 工作坊 Hermes 技能</div>
+    <div>AI 工具在产品工作中的深度应用</div>
+  </div>
+</div>
+</body>
+</html>
